@@ -1,0 +1,18 @@
+type Achievement {
+  completed: Boolean!
+  year: Int
+  month: Int
+  day: Int
+  list: List
+}
+
+type List {
+  title: String!
+  user: User
+  achievements: [Achievement] @relation
+}
+
+type User {
+  name: String!
+  lists: [List] @relation
+}
