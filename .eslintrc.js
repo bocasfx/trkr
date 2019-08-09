@@ -3,17 +3,15 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": [
-      "eslint:recommended",
-      'plugin:prettier/recommended',
-    ],
+    "extends": "airbnb",
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "experimentalObjectRestSpread": true
         },
         "ecmaVersion": 2018,
         "sourceType": "module"
@@ -37,6 +35,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "react/jsx-filename-extension": 0,
     }
 };

@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ListList from './components/ListList';
 import './index.css';
 
-class App extends React.Component {
-  render() {
-    return <div>Hello World</div>;
-  }
-}
+const App = () => <ListList />;
 
 ReactDOM.render(<App />, document.getElementById('app'));
