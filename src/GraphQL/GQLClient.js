@@ -14,7 +14,7 @@ class GQLClient {
     const authLink = setContext((_, { headers }) => ({
       headers: {
         ...headers,
-        authorization: 'Bearer fnADVYwUEDACDe2oHjtBko7ufrHF4MiiUqtpYq_Q',
+        authorization: 'Bearer fnADVoam88ACA0oQyg_YJgCCC-t6Py6YmcK5zKwi',
       },
     }));
 

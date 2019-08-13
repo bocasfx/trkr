@@ -1,44 +1,22 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React from 'react';
-import gql from 'graphql-tag';
-import gqlClient from '../GraphQL/GQLClient';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const query = gql`
-query GetAllLists {
-  allLists {
-    data {
-      id: _id
-      title
-    }
-  } 
-}
-`;
+// @ts-ignore
+const renderLists = lists => lists.map(list => <div key={list.title}>{list.title}</div>);
 
-class ListList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lists: [],
-    };
-  }
+const ListList = () => {
+  const [lists, setLists] = useState([]);
 
-  componentWillMount() {
-    gqlClient.query({ query }).then((result) => {
-      this.setState({
-        lists: result.data.allLists.data,
-      });
+  useEffect(() => {
+    axios.get('/.netlify/functions/lists-read-all').then((response) => {
+      const responseLists = response.data.map(item => item.data);
+      setLists(responseLists);
     });
-  }
+  }, []);
 
-  renderLists() {
-    const { lists } = this.state;
-    return lists.map(list => <div key={list.id}>{list.title}</div>);
-  }
-
-  render() {
-    return <>{this.renderLists()}</>;
-  }
-}
+  return <>{renderLists(lists)}</>;
+};
 
 export default ListList;
