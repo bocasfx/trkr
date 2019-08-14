@@ -4,6 +4,7 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import 'isomorphic-fetch';
 
 class GQLClient {
   constructor() {
@@ -14,7 +15,7 @@ class GQLClient {
     const authLink = setContext((_, { headers }) => ({
       headers: {
         ...headers,
-        authorization: 'Bearer fnADVoam88ACA0oQyg_YJgCCC-t6Py6YmcK5zKwi',
+        authorization: `Bearer ${process.env.FAUNA_DB_SECRET}`,
       },
     }));
 

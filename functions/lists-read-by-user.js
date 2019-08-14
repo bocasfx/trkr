@@ -1,19 +1,26 @@
 import gql from 'graphql-tag';
-import gqlClient from './utils/GQLClient';
+import gqlClient from './GraphQL/GQLClient';
+import getId from './utils/getId';
 
 const query = gql`
-  query testQuery {
-    allLists {
-      data {
-        title
+  query testQuery($id: ID!) {
+    findUserByID(id: $id) {
+      name
+      _id
+      lists {
+        data {
+          title
+        }
       }
     }
   }
 `;
 
 exports.handler = (event, context, callback) => {
+  const id = getId(event.path);
+  const variables = { id };
   gqlClient
-    .query({ query })
+    .query({ query, variables })
     .then((response) => {
       callback(null, {
         statusCode: 200,

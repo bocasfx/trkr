@@ -10,8 +10,8 @@ const ListList = () => {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    axios.get('/.netlify/functions/lists-read-all-gql').then((response) => {
-      const responseLists = response.data.data.allLists.data;
+    axios.get('/.netlify/functions/lists-read-by-user/240678459528970765').then((response) => {
+      const responseLists = response.data.data.findUserByID.lists.data;
       setLists(responseLists);
     });
   }, []);
