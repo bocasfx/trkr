@@ -16,3 +16,7 @@ type User {
   name: String!
   lists: [List] @relation
 }
+
+type Query {
+  findUsersByName(name: String): User! 
+}
