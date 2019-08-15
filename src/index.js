@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListList from './components/ListList';
+import { Router } from '@reach/router';
 import './index.css';
-import Calendar from './components/Calendar';
+import Login from './screens/login';
+import Main from './screens/main';
 
 const App = () => (
-  <>
-    <ListList />
-    <Calendar />
-  </>
+  <Router>
+    <Login path="/" />
+    <Main path="main" />
+  </Router>
 );
 
 ReactDOM.render(<App />, document.getElementById('app'));
