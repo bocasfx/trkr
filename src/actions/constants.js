@@ -1,0 +1,5 @@
+const UPDATE_AUTH_STATUS = 'UPDATE_AUTH_STATUS';
+
+export {
+  UPDATE_AUTH_STATUS,
+};
