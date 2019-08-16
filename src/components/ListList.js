@@ -10,7 +10,7 @@ const ListList = () => {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    axios.get('/.netlify/functions/lists-read-by-user/240678459528970765').then((response) => {
+    axios.get('/.netlify/functions/find-user-by-id/240678459528970765').then((response) => {
       const responseLists = response.data.data.findUserByID.lists.data;
       setLists(responseLists);
     });

@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const doLogin = (username) => {
-  console.log(username);
+  const data = {
+    username,
+  };
+
+  axios.post('/.netlify/functions/find-user-by-name', data).then((response) => {
+    // eslint-disable-next-line no-underscore-dangle
+    const userId = response.data.data.findUserByName._id;
+    console.log(userId);
+  });
 };
 
 const Login = () => {
