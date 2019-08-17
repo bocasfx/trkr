@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { navigate } from '@reach/router';
 import { updateAuthStatus } from '../../actions';
 
 const Login = (props) => {
@@ -16,7 +17,10 @@ const Login = (props) => {
     axios.post('/.netlify/functions/find-user-by-name', data).then((response) => {
       // eslint-disable-next-line no-underscore-dangle
       const userId = response.data.data.findUserByName._id;
-      props.updateAuthStatus(true, userId);
+      if (userId) {
+        props.updateAuthStatus(true, userId);
+        navigate('/main');
+      }
     });
   };
 
