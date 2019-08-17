@@ -5,6 +5,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import { updateAuthStatus } from '../../actions';
+import NavBar from './NavBar';
 
 const Login = (props) => {
   const [username, setUsername] = useState('');
@@ -31,12 +32,7 @@ const Login = (props) => {
     setUsername(evt.target.value);
   };
 
-  return (
-    <>
-      <input type="text" onKeyUp={onKeyUp} />
-      <button type="button" onClick={() => doLogin(username)}>Login</button>
-    </>
-  );
+  return <NavBar />;
 };
 
 Login.propTypes = {

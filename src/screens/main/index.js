@@ -1,28 +1,32 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import ListList from '../../components/ListList';
 import Calendar from '../../components/Calendar';
+import NavBar from '../login/NavBar';
+import { useAuth0 } from '../login/login-wrapper';
 
-const Main = (props) => {
-  const { isAuthenticated } = props;
-  return isAuthenticated ? (
+const Main = () => {
+  const result = useAuth0();
+  const { loading, user } = result;
+
+  console.log(result);
+
+  if (loading || !user) {
+    return (
+      <div>Loading...</div>
+    );
+  }
+
+  return (
     <>
+      <NavBar />
+      <img src={user.picture} alt="Profile" />
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+      <code>{JSON.stringify(user, null, 2)}</code>
       <ListList />
       <Calendar />
     </>
-  ) : <div>Not authorized</div>;
+  );
 };
 
-Main.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  const { isAuthenticated } = state.auth;
-  return {
-    isAuthenticated,
-  };
-};
-
-export default connect(mapStateToProps)(Main);
+export default Main;
