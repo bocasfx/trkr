@@ -1,8 +1,8 @@
 import React from 'react';
-import ListList from '../../components/ListList';
-import Calendar from '../../components/Calendar';
-import NavBar from '../login/NavBar';
-import { useAuth0 } from '../login/login-wrapper';
+import ListList from '../components/ListList';
+import Calendar from '../components/Calendar';
+import NavBar from '../components/NavBar';
+import { useAuth0 } from '../utils/Auth0Provider';
 
 const Main = () => {
   const result = useAuth0();
@@ -12,7 +12,7 @@ const Main = () => {
 
   if (loading || !user) {
     return (
-      <div>Loading...</div>
+      <div>Unauthorized.</div>
     );
   }
 

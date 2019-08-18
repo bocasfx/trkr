@@ -20,6 +20,7 @@ module.exports = {
     }),
   ],
   devServer: {
+    historyApiFallback: true,
     proxy: {
       '/.netlify/functions': {
         target: 'hthttp://localhost:9000',

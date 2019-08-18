@@ -1,5 +1,5 @@
 import React from 'react';
-import { months } from '../../constants';
+import { months } from './constants';
 import Header from './Header';
 import Row from './Row';
 

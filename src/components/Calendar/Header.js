@@ -1,5 +1,5 @@
 import React from 'react';
-import { days } from '../../constants';
+import { days } from './constants';
 import './Header.css';
 
 const renderCells = () => days.map(day => <div key={day}>{day}</div>);
