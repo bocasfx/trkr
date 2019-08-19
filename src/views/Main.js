@@ -8,8 +8,6 @@ const Main = () => {
   const result = useAuth0();
   const { loading, user } = result;
 
-  console.log(result);
-
   if (loading || !user) {
     return (
       <div>Unauthorized.</div>
