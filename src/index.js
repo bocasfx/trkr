@@ -6,10 +6,10 @@ import { Router, navigate } from '@reach/router';
 import './index.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Main from './screens/Main';
+import Main from './views/Main';
 import reducers from './reducers';
 import { Auth0Provider } from './utils/Auth0Provider';
-import Login from './screens/Login';
+import Login from './views/Login';
 
 const store = createStore(
   reducers,

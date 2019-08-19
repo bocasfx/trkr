@@ -1,11 +1,8 @@
-import { UPDATE_AUTH_STATUS } from './constants';
+import { SET_USER_EMAIL } from './constants';
 
-const updateAuthStatus = (isAuthenticated, userId) => {
-  return {
-    type: UPDATE_AUTH_STATUS,
-    isAuthenticated,
-    userId,
-  };
-};
+const setUserEmail = email => ({
+  type: SET_USER_EMAIL,
+  email,
+});
 
-export { updateAuthStatus };
+export { setUserEmail };

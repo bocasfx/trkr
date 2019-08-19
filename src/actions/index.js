@@ -1,3 +1,3 @@
-import { updateAuthStatus } from './auth';
+import { setUserEmail } from './auth';
 
-export { updateAuthStatus };
+export { setUserEmail };

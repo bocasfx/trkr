@@ -1,18 +1,16 @@
-import { UPDATE_AUTH_STATUS } from '../actions/constants';
+import { SET_USER_EMAIL } from '../actions/constants';
 
 const initialState = {
-  isAuthenticated: false,
-  userId: null,
+  email: null,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_AUTH_STATUS: {
-      const { isAuthenticated, userId } = action;
+    case SET_USER_EMAIL: {
+      const { email } = action;
       return {
         ...state,
-        isAuthenticated,
-        userId,
+        email,
       };
     }
     default:
