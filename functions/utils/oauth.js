@@ -1,6 +1,6 @@
 import simpleOauth from 'simple-oauth2';
 
-const intercomApi = 'https://app.intercom.io';
+const intercomApi = 'https://trkr.auth0.com/authorize';
 /* process.env.URL from netlify BUILD environment variables */
 const siteUrl = process.env.URL || 'http://localhost:3000';
 
@@ -11,7 +11,7 @@ export const config = {
   clientSecret: process.env.INTERCOM_CLIENT_SECRET,
   /* Intercom oauth API endpoints */
   tokenHost: intercomApi,
-  authorizePath: `${intercomApi}/oauth`,
+  authorizePath: `${intercomApi}/authorize`,
   tokenPath: `${intercomApi}/auth/eagle/token`,
   profilePath: `${intercomApi}/me/`,
   /* redirect_uri is the callback url after successful signin */
