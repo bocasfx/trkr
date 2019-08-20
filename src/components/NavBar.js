@@ -8,6 +8,7 @@ const NavBar = () => {
   const label = isAuthenticated ? 'Log out' : 'Log in';
   return (
     <div className="navbar-container">
+      <a href="/.netlify/functions/auth">auth</a>
       <button type="button" onClick={onClick}>
         {label}
       </button>

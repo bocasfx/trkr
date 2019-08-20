@@ -18,7 +18,7 @@ exports.handler = (event, context, callback) => {
       Location: authorizationURI,
       'Cache-Control': 'no-cache', // Disable caching of this response
     },
-    body: '', // return body for local dev
+    body: 'redirect', // return body for local dev
   };
 
   return callback(null, response);
