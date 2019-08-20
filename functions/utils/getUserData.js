@@ -1,6 +1,11 @@
 import request from 'request';
 import querystring from 'querystring';
-import { config } from './oauth';
+import {
+  clientId,
+  clientSecret,
+  appId,
+  profilePath,
+} from '../config';
 
 /* promisify request call */
 function requestWrapper(requestOptions, token) {
@@ -21,13 +26,13 @@ function requestWrapper(requestOptions, token) {
 /* Call into https://app.intercom.io/me and return user data */
 export default function getUserData(token) {
   const postData = querystring.stringify({
-    client_id: config.clientId,
-    client_secret: config.clientSecret,
-    app_id: config.appId,
+    client_id: clientId,
+    client_secret: clientSecret,
+    app_id: appId,
   });
 
   const requestOptions = {
-    url: `${config.profilePath}?${postData}`,
+    url: `${profilePath}?${postData}`,
     json: true,
     auth: {
       user: token.token.token,

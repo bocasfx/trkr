@@ -1,13 +1,13 @@
-import oauth2, { config } from './utils/oauth';
+import oauth2 from './utils/oauth';
+// eslint-disable-next-line camelcase
+import { redirect_uri } from './config';
 
 /* Do initial auth redirect */
 exports.handler = (event, context, callback) => {
   /* Generate authorizationURI */
   const authorizationURI = oauth2.authorizationCode.authorizeURL({
-    redirect_uri: config.redirect_uri,
-    /* Specify how your app needs to access the user’s account. http://bit.ly/intercom-scopes */
+    redirect_uri,
     scope: 'name,email',
-    /* State helps mitigate CSRF attacks & Restore the previous state of your app */
     state: 'some state',
   });
 

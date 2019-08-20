@@ -1,25 +1,32 @@
 import getUserData from './utils/getUserData';
-import oauth2, { config } from './utils/oauth';
+import oauth2 from './utils/oauth';
+import {
+  // eslint-disable-next-line camelcase
+  redirect_uri,
+  clientId,
+  clientSecret,
+} from './config';
 
-/* Function to handle intercom auth callback */
+/* Function to handle auth callback */
 exports.handler = (event, context, callback) => {
   /* state helps mitigate CSRF attacks & Restore the previous state of your app */
+  console.log(event);
   const { code, state } = event.queryStringParameters.code;
 
 
   /* Take the grant code and exchange for an accessToken */
   oauth2.authorizationCode.getToken({
     code,
-    redirect_uri: config.redirect_uri,
-    client_id: config.clientId,
-    client_secret: config.clientSecret,
+    redirect_uri,
+    client_id: clientId,
+    client_secret: clientSecret,
   })
     .then((result) => {
       const token = oauth2.accessToken.create(result);
       console.log('accessToken', token);
       return token;
     })
-    // Get more info about intercom user
+    // Get more info about the user
     .then(getUserData)
     // Do stuff with user data & token
     .then((result) => {
