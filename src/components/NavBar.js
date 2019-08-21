@@ -1,16 +1,17 @@
 import React from 'react';
-import { useAuth0 } from '../utils/Auth0Provider';
+import axios from 'axios';
 import './NavBar.css';
 
 const NavBar = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  const onClick = () => (isAuthenticated ? logout() : loginWithRedirect({}));
-  const label = isAuthenticated ? 'Log out' : 'Log in';
+  const onClick = () => {
+    axios.get('/.netlify/functions/auth').then((response) => {
+      console.log(response);
+    });
+  }
   return (
     <div className="navbar-container">
-      <a href="/.netlify/functions/auth">auth</a>
       <button type="button" onClick={onClick}>
-        {label}
+        Login
       </button>
     </div>
   );

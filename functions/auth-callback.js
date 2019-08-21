@@ -1,10 +1,7 @@
-import getUserData from './utils/getUserData';
 import oauth2 from './utils/oauth';
 import {
   // eslint-disable-next-line camelcase
   redirect_uri,
-  clientId,
-  clientSecret,
 } from './config';
 
 /* Function to handle auth callback */
@@ -19,11 +16,10 @@ exports.handler = (event, context, callback) => {
     redirect_uri,
     scope: 'name,email',
   })
-    .then((result) => {
-      // const token = oauth2.accessToken.create(result);
-      console.log('accessToken', result);
-      // return token;
-    })
+    .then(result => callback(null, {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    }))
     // // Get more info about the user
     // .then(getUserData)
     // // Do stuff with user data & token
