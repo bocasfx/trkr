@@ -3,12 +3,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import netlifyIdentity from 'netlify-identity-widget';
 
 // @ts-ignore
 const renderLists = lists => lists.map(list => <div key={list.title}>{list.title}</div>);
 
 const ListList = (props) => {
   const [lists, setLists] = useState([]);
+
+  const generateHeaders = () => {
+    const headers = { 'Content-Type': 'application/json' };
+    if (netlifyIdentity.currentUser()) {
+      return netlifyIdentity.currentUser().jwt().then((token) => ({ ...headers, Authorization: `Bearer ${token}` }));
+    }
+    return Promise.resolve(headers);
+  };
 
   useEffect(() => {
     const { userId } = props;

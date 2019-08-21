@@ -1,16 +1,21 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import netlifyIdentity from 'netlify-identity-widget';
+
 import './NavBar.css';
 
 const NavBar = () => {
-  const onClick = () => {
-    axios.get('/.netlify/functions/auth').then((response) => {
-      console.log(response);
-    });
-  }
+  useEffect(() => {
+    netlifyIdentity.init();
+  }, []);
+
+  const handleIdentity = (e) => {
+    e.preventDefault();
+    netlifyIdentity.open();
+  };
+
   return (
     <div className="navbar-container">
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={handleIdentity}>
         Login
       </button>
     </div>
