@@ -1,11 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import netlifyIdentity from 'netlify-identity-widget';
+import { navigate } from '@reach/router';
 
 import './NavBar.css';
 
+netlifyIdentity.on('login', () => {
+  netlifyIdentity.close();
+  navigate('/main');
+});
+
+netlifyIdentity.on('logout', () => {
+  netlifyIdentity.close();
+  navigate('/');
+});
+
 const NavBar = () => {
+  const [label, setLabel] = useState('');
+
   useEffect(() => {
-    netlifyIdentity.init();
+    const currentUser = netlifyIdentity.currentUser();
+    setLabel(currentUser !== null ? 'Logout' : 'Login');
+
+    if (!currentUser) {
+      navigate('/');
+    }
   }, []);
 
   const handleIdentity = (e) => {
@@ -16,7 +34,7 @@ const NavBar = () => {
   return (
     <div className="navbar-container">
       <button type="button" onClick={handleIdentity}>
-        Login
+        {label}
       </button>
     </div>
   );

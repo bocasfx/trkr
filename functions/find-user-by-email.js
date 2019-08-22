@@ -1,19 +1,6 @@
-import gql from 'graphql-tag';
 import gqlClient from './GraphQL/GQLClient';
+import { findUserByEmail as query } from './GraphQL/queries';
 
-const query = gql`
-  query FindUserByEmail($email: String) {
-    findUserByEmail(email: $email) {
-      _id
-      email
-      lists {
-        data {
-          title
-        }
-      }
-    }
-  }
-`;
 
 exports.handler = (event, context, callback) => {
   const { identity, user } = context.clientContext;

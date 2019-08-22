@@ -1,14 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Router, navigate } from '@reach/router';
+import { Router } from '@reach/router';
+import netlifyIdentity from 'netlify-identity-widget';
 import './index.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Main from './views/Main';
 import reducers from './reducers';
-import { Auth0Provider } from './utils/Auth0Provider';
 import Login from './views/Login';
 
 const store = createStore(
@@ -16,24 +16,20 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
-const onRedirectCallback = () => {
-  navigate('/main');
-};
+netlifyIdentity.init();
 
-const App = () => (
-  <Provider store={store}>
-    <Auth0Provider
-      domain="trkr.auth0.com"
-      client_id="vs4HAin8dv1HGYa8H7idyTLKvSsX01NO"
-      redirect_uri={window.location.origin}
-      onRedirectCallback={onRedirectCallback}
-    >
+const App = () => {
+  useEffect(() => {
+  }, []);
+
+  return (
+    <Provider store={store}>
       <Router>
         <Login path="/" />
         <Main path="/main" />
       </Router>
-    </Auth0Provider>
-  </Provider>
-);
+    </Provider>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));
