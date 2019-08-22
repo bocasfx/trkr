@@ -7,6 +7,13 @@ import { callLambda } from '../utils';
 const Main = () => {
   const [lists, setLists] = useState([]);
 
+  const createUser = () => {
+    callLambda('create-user', 'POST')
+      .catch((err) => {
+        console.log(JSON.stringify(err, null, 2)); // eslint-disable-line
+      });
+  };
+
   useEffect(() => {
     callLambda('find-user-by-email', 'POST')
       .then((response) => {
@@ -18,13 +25,7 @@ const Main = () => {
       .then((response) => {
         const { findUserByEmail } = response.data;
         if (!findUserByEmail) {
-          callLambda('create-user', 'POST')
-            .then((response1) => {
-              console.log(response1);
-            })
-            .catch((err) => {
-              console.log(JSON.stringify(err, null, 2)); // eslint-disable-line
-            });
+          createUser();
         }
       })
       .catch((err) => {
@@ -38,6 +39,6 @@ const Main = () => {
       <Calendar />
     </>
   );
-}
+};
 
 export default Main;

@@ -1,5 +1,5 @@
 import gqlClient from './GraphQL/GQLClient';
-import { createUser as query } from './GraphQL/queries';
+import { createUser as mutation } from './GraphQL/queries';
 
 exports.handler = (event, context, callback) => {
   const { identity, user } = context.clientContext;
@@ -23,7 +23,7 @@ exports.handler = (event, context, callback) => {
 
   const variables = { email };
   gqlClient
-    .query({ query, variables })
+    .mutate({ mutation, variables })
     .then((response) => {
       callback(null, {
         statusCode: 200,
