@@ -13,10 +13,10 @@ type List {
 }
 
 type User {
-  name: String!
+  email: String!
   lists: [List] @relation
 }
 
 type Query {
-  findUserByName(name: String): User! 
+  findUserByEmail(email: String): User!
 }

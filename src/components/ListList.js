@@ -22,8 +22,8 @@ const ListList = () => {
 
   useEffect(() => {
     generateHeaders().then((headers) => {
-      axios.post('/.netlify/functions/find-user-by-name', { username: 'Joe' }, { headers }).then((response) => {
-        const responseLists = response.data.data.findUserByID.lists.data;
+      axios.post('/.netlify/functions/find-user-by-email', { email: 'rpalacios75@gmail.com' }, { headers }).then((response) => {
+        const responseLists = response.data.data.findUserByEmail.lists.data;
         setLists(responseLists);
       });
     });
