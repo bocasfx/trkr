@@ -4,7 +4,13 @@ import gqlClient from './GraphQL/GQLClient';
 const query = gql`
   query FindUserByEmail($email: String) {
     findUserByEmail(email: $email) {
-      lists
+      _id
+      email
+      lists {
+        data {
+          title
+        }
+      }
     }
   }
 `;
