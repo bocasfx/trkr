@@ -2,26 +2,34 @@ import gql from 'graphql-tag';
 import gqlClient from './GraphQL/GQLClient';
 
 const query = gql`
-  query FindUserByName($name: String) {
-    findUserByName(name: $name) {
-      _id
+  query FindUserByEmail($email: String) {
+    findUserByEmail(email: $email) {
+      lists
     }
   }
 `;
 
 exports.handler = (event, context, callback) => {
-  const { username: name } = JSON.parse(event.body);
-  if (!name) {
+  const { identity, user } = context.clientContext;
+  if (!identity) {
+    callback(null, {
+      statusCode: 401,
+      body: JSON.stringify({ error: 'Unauthorized' }),
+    });
+    return;
+  }
+  const { email } = user;
+  if (!email) {
     callback(null, {
       statusCode: 400,
       body: JSON.stringify({
-        error: 'Invalid username.',
+        error: 'Invalid user data.',
       }),
     });
     return;
   }
 
-  const variables = { name };
+  const variables = { email };
   gqlClient
     .query({ query, variables })
     .then((response) => {
