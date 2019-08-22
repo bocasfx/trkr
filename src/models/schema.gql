@@ -18,5 +18,5 @@ type User {
 }
 
 type Query {
-  findUserByEmail(email: String): User!
+  findUserByEmail(email: String): User
 }

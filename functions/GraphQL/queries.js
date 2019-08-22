@@ -28,7 +28,16 @@ const findUserById = gql`
   }
 `;
 
+const createUser = gql`
+  mutation createUser($email: String!) {
+    createUser(data: { email: $email }) {
+      _id
+    }
+  }
+`;
+
 export {
   findUserByEmail,
   findUserById,
+  createUser,
 };
