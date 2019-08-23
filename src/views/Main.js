@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import ListList from '../components/ListList';
 import Calendar from '../components/Calendar';
 import NavBar from '../components/NavBar';
 import { callLambda } from '../utils';
+import { findUserByEmail as fube } from '../sagas/user';
+
 
 const Main = () => {
+  const dispatch = useDispatch();
   const [lists, setLists] = useState([]);
 
   const createUser = () => {
@@ -42,6 +46,7 @@ const Main = () => {
   return (
     <>
       <NavBar />
+      <button type="button" onClick={() => dispatch(fube())}>FUBE</button>
       <button type="button" onClick={createList}>Add List</button>
       <ListList lists={lists} />
       <Calendar />
