@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import netlifyIdentity from 'netlify-identity-widget';
 import { navigate } from '@reach/router';
+import { useSelector } from 'react-redux';
 
 import './NavBar.css';
 
@@ -15,6 +16,7 @@ netlifyIdentity.on('logout', () => {
 });
 
 const NavBar = () => {
+  const user = useSelector(state => state.user);
   const [label, setLabel] = useState('');
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar-container">
+      <span>{user.email}</span>
       <button type="button" onClick={handleIdentity}>
         {label}
       </button>

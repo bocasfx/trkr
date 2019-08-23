@@ -8,6 +8,7 @@ const findUserByEmail = gql`
       lists {
         data {
           name
+          _id
         }
       }
     }
@@ -22,6 +23,7 @@ const findUserById = gql`
       lists {
         data {
           name
+          _id
         }
       }
     }

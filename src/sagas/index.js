@@ -1,8 +1,20 @@
 import { all } from 'redux-saga/effects';
-import { watchFindUserByEmail } from './user';
+import { combineReducers } from 'redux';
+import { watchFindUserByEmail, reducer as user } from './user';
+import { reducer as lists } from './lists';
 
-export default function* rootSaga() {
+function* rootSaga() {
   yield all([
     watchFindUserByEmail(),
   ]);
+}
+
+const rootReducer = combineReducers({
+  user,
+  lists,
+});
+
+export {
+  rootSaga,
+  rootReducer,
 };

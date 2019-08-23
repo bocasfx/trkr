@@ -10,7 +10,7 @@ const ListList = (props) => {
 };
 
 ListList.propTypes = {
-  lists: PropTypes.arrayOf(PropTypes.string).isRequired,
+  lists: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ListList;
