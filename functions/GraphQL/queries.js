@@ -7,7 +7,7 @@ const findUserByEmail = gql`
       email
       lists {
         data {
-          title
+          name
         }
       }
     }
@@ -21,7 +21,7 @@ const findUserById = gql`
       _id
       lists {
         data {
-          title
+          name
         }
       }
     }
@@ -36,8 +36,17 @@ const createUser = gql`
   }
 `;
 
+const createList = gql`
+  mutation createList($name: String!) {
+    createList(data: { name: $name }) {
+      _id
+    }
+  }
+`;
+
 export {
   findUserByEmail,
   findUserById,
   createUser,
+  createList,
 };

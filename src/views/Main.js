@@ -14,6 +14,13 @@ const Main = () => {
       });
   };
 
+  const createList = () => {
+    callLambda('create-list', 'POST', JSON.stringify({ name: 'test' }))
+      .catch((err) => {
+        console.log(JSON.stringify(err, null, 2)); // eslint-disable-line
+      });
+  };
+
   useEffect(() => {
     callLambda('find-user-by-email', 'POST')
       .then((response) => {
@@ -35,6 +42,7 @@ const Main = () => {
   return (
     <>
       <NavBar />
+      <button type="button" onClick={createList}>Add List</button>
       <ListList lists={lists} />
       <Calendar />
     </>

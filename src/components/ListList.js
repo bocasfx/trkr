@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const renderLists = lists => lists.map(list => <div key={list.title}>{list.title}</div>);
+const renderLists = lists => lists.map(list => <div key={list.name}>{list.name}</div>);
 
 const ListList = (props) => {
   const { lists } = props;

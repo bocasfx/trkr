@@ -7,7 +7,7 @@ type Achievement {
 }
 
 type List {
-  title: String!
+  name: String!
   user: User
   achievements: [Achievement] @relation
 }
