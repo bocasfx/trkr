@@ -2,6 +2,7 @@ import React from 'react';
 import { months } from './constants';
 import Header from './Header';
 import Row from './Row';
+import './Calendar.css';
 
 // const showCalendar = (month, year) => {
 //   selectYear.value = year;
@@ -50,8 +51,8 @@ const Calendar = () => {
   const daysInMonth = 32 - new Date(year, month, 32).getDate();
 
   return (
-    <>
-      <div>{`${months[month]} ${year}`}</div>
+    <div className="calendar-container">
+      <h1 className="calendar-header">{`${months[month]} ${year}`}</h1>
       <Header />
       <Row
         firstDay={firstDay}
@@ -59,7 +60,7 @@ const Calendar = () => {
         date={1}
         daysInMonth={daysInMonth}
       />
-    </>
+    </div>
   );
 };
 

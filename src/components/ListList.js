@@ -1,12 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-
-const renderLists = lists => lists.map(list => <div key={list.name}>{list.name}</div>);
+import { closeMenu } from '../sagas/side-menu';
+import './ListList.css';
 
 const ListList = (props) => {
   const { lists } = props;
+  const dispatch = useDispatch();
 
-  return <>{renderLists(lists)}</>;
+  const onListSelection = () => {
+    dispatch(closeMenu());
+  };
+
+  const renderLists = () => lists.map(list => (
+    <li key={list.name}>
+      <button type="button" onClick={onListSelection}>{list.name}</button>
+    </li>
+  ));
+
+  return <ul className="list-list-container">{renderLists()}</ul>;
 };
 
 ListList.propTypes = {
