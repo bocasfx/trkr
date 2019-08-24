@@ -46,9 +46,26 @@ const createList = gql`
   }
 `;
 
+const findListByID = gql`
+  query findListByID($id: ID!) {
+    findListByID(id: $id) {
+      achievements {
+        data {
+          _id
+          year
+          month
+          day
+          completed
+        }
+      }
+    }
+  }
+`;
+
 export {
   findUserByEmail,
   findUserById,
+  findListByID,
   createUser,
   createList,
 };
