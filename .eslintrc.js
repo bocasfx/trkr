@@ -37,6 +37,7 @@ module.exports = {
             "error",
             "always"
         ],
+        "no-plusplus": 0,
         "react/jsx-filename-extension": 0,
     }
 };
