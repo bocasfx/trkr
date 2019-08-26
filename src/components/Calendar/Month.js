@@ -13,7 +13,7 @@ const Month = (props) => {
     let dateNumber = 1;
     const daysInMonth = 32 - new Date(year, month, 32).getDate();
     const firstDay = new Date(year, month).getDay();
-    const weekContainerClass = viewFullYear ? 'week-container' : 'week-container-large';
+    const weekContainerClass = viewFullYear ? 'month__week-container' : 'month__week-container-large';
 
     const rows = [];
     for (let rowIdx = 0; rowIdx < 5; rowIdx++) {

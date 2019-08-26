@@ -1,33 +1,29 @@
-/* .month-container {
-  margin: 16px;
-} */
-
-.week-container {
+.month__week-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.week-container div {
+.month__week-container div {
   width: 20px;
   padding: 8px;
-  margin-top: 16px;
+  margin: 16px 4px 0;
   border: 1px solid #eee;
   border-radius: 32px;
   text-align: center;
   font-size: 0.7em;
 }
 
-.week-container-large {
+.month__week-container-large {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.week-container-large div {
+.month__week-container-large div {
   width: 20px;
   padding: 24px;
-  margin-top: 16px;
+  margin: 16px;
   border: 1px solid #eee;
   border-radius: 50%;
   text-align: center;

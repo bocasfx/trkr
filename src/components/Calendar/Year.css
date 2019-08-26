@@ -1,0 +1,25 @@
+.year__header-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.year__header-container i {
+  color: #eee;
+  cursor: pointer;
+}
+
+.year__header-container i:hover {
+  color: #aaa;
+}
+
+.year__month-section {
+  margin: 24px;
+}
+
+.year__calendar-header {
+  display: inline;
+  color: orangered;
+  margin: 0 8px 0;
+}

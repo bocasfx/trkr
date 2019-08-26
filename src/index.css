@@ -7,3 +7,12 @@ html, body {
 button {
   border-radius: 3px;
 }
+
+.invisible-button {
+  border: none;
+  background: transparent;
+  outline: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}

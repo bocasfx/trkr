@@ -1,42 +1,14 @@
-.claendar-header-container {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 24px;
-  align-items: center;
-}
-
-.claendar-header-container i {
-  color: #eee;
-  cursor: pointer;
-}
-
-.claendar-header-container i:hover {
-  color: #aaa;
-}
-
-.calendar-header {
-  display: inline;
-  color: orangered;
-  margin: 0 16px 0;
-}
-
-.month-section {
-  margin: 24px;
-}
-
-.calendar-container {
-  max-width: 1000px;
+.calendar__calendar-container {
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.calendar__calendar-container h1 {
+  margin-left: 72px;
+}
+
+.calendar__year-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.invisible-button {
-  border: none;
-  background: transparent;
-  outline: none;
-  user-select: none;
-  display: flex;
-  align-items: center;
 }
