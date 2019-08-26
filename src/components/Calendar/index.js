@@ -1,25 +1,43 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { months } from './constants';
 import Header from './Header';
 import Month from './Month';
-import './Calendar.css';
+import './index.css';
+import { displayFullYear } from '../../sagas/settings';
 
 const year = 2019;
-const month = 6;
 
-const achievements = useSelector(state => state.achievements);
+const Calendar = () => {
+  const achievements = useSelector(state => state.achievements);
+  const dispatch = useDispatch();
 
-const Calendar = () => (
-  <div className="calendar-container">
-    <h1 className="calendar-header">{`${months[month]} ${year}`}</h1>
-    <Header />
-    <Month
-      year={year}
-      month={month}
-      achievements={achievements}
-    />
-  </div>
-);
+  const setViewFullYear = viewMonth => () => {
+    dispatch(displayFullYear(false, viewMonth));
+  };
+
+  const renderMonths = () => {
+    const monthElements = [];
+    for (let idx = 0; idx < 12; idx++) {
+      monthElements.push(
+        <div className="month-section" key={idx}>
+          <div className="claendar-header-container">
+            <h1 className="calendar-header">{`${months[idx]} ${year}`}</h1>
+            <i className="material-icons" onClick={setViewFullYear(idx)}>remove_red_eye</i>
+          </div>
+          <Header />
+          <Month year={year} month={idx} achievements={achievements} />
+        </div>,
+      );
+    }
+    return monthElements;
+  };
+
+  return (
+    <div className="calendar-container">
+      {renderMonths()}
+    </div>
+  );
+};
 
 export default Calendar;

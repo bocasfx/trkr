@@ -4,6 +4,7 @@ import { watchFindUserByEmail, reducer as user } from './user';
 import { watchFindListById, reducer as achievements } from './achievements';
 import { reducer as lists } from './lists';
 import { reducer as sideMenu } from './side-menu';
+import { reducer as settings } from './settings';
 
 function* rootSaga() {
   yield all([
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   lists,
   sideMenu,
   achievements,
+  settings,
 });
 
 export {

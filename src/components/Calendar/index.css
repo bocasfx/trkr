@@ -1,0 +1,33 @@
+.claendar-header-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.claendar-header-container i {
+  color: #eee;
+  cursor: pointer;
+}
+
+.claendar-header-container i:hover {
+  color: #aaa;
+}
+
+.calendar-header {
+  display: inline;
+  color: orangered;
+  margin: 0 16px 0;
+}
+
+.month-section {
+  margin: 24px;
+}
+
+.calendar-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

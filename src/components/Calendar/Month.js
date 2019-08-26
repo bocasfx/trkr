@@ -8,7 +8,7 @@ const Month = (props) => {
     month,
   } = props;
 
-  const renderRows = () => {
+  const renderWeeks = () => {
     let dateNumber = 1;
     const daysInMonth = 32 - new Date(year, month, 32).getDate();
     const firstDay = new Date(year, month).getDay();
@@ -26,12 +26,12 @@ const Month = (props) => {
           dateNumber++;
         }
       }
-      rows.push(<div key={rowIdx} className="month-container">{cells}</div>);
+      rows.push(<div key={rowIdx} className="week-container">{cells}</div>);
     }
     return rows;
   };
 
-  return <>{renderRows()}</>;
+  return <div className="month-container">{renderWeeks()}</div>;
 };
 
 Month.propTypes = {
