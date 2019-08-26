@@ -31,3 +31,10 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.invisible-button {
+  border: none;
+  background: transparent;
+  outline: none;
+  user-select: none;
+}

@@ -10,23 +10,29 @@ const year = 2019;
 
 const Calendar = () => {
   const achievements = useSelector(state => state.achievements);
+  const { viewFullYear, viewMonth } = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
-  const setViewFullYear = viewMonth => () => {
-    dispatch(displayFullYear(false, viewMonth));
+  const setViewFullYear = showMonth => () => {
+    dispatch(displayFullYear(false, showMonth));
   };
+
+  const from = viewFullYear ? 0 : viewMonth;
+  const to = viewFullYear ? 12 : viewMonth;
 
   const renderMonths = () => {
     const monthElements = [];
-    for (let idx = 0; idx < 12; idx++) {
+    for (let idx = from; idx < to; idx++) {
       monthElements.push(
         <div className="month-section" key={idx}>
           <div className="claendar-header-container">
             <h2 className="calendar-header">{months[idx]}</h2>
-            <i className="material-icons" onClick={setViewFullYear(idx)}>remove_red_eye</i>
+            <button type="button" onClick={setViewFullYear(idx)} className="invisible-button">
+              <i className="material-icons">remove_red_eye</i>
+            </button>
           </div>
           <Header />
-          <Month year={year} month={idx} achievements={achievements} />
+          <Month year={year} month={idx} achievements={achievements} viewFullYear={viewFullYear} />
         </div>,
       );
     }

@@ -1,5 +1,5 @@
 const initialState = {
-  viewFullYear: false,
+  viewFullYear: true,
 };
 
 const displayFullYear = (viewFullYear, viewMonth) => ({
