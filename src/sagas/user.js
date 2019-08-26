@@ -1,5 +1,6 @@
 import { put, takeLeading } from 'redux-saga/effects';
 import { callLambda } from '../utils';
+import { findListByID } from './achievements';
 
 const findUserByEmail = () => ({
   type: 'FIND_USER_BY_EMAIL_BEGIN',
@@ -11,10 +12,14 @@ function* doFindUserByEmail() {
     const { findUserByEmail: responseData } = response.data;
 
     if (!responseData) {
+      // TODO: turn into an action.
       yield callLambda('create-user', 'POST');
     }
 
     yield put({ type: 'FIND_USER_BY_EMAIL_SUCCESS', data: responseData });
+
+    const listId = responseData.lists.data[0]._id; // eslint-disable-line no-underscore-dangle
+    yield put(findListByID(listId));
   } catch (err) {
     yield put({ type: 'FIND_USER_BY_EMAIL_FAILURE' });
   }

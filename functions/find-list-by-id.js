@@ -23,7 +23,6 @@ exports.handler = (event, context, callback) => {
   }
 
   const { body } = event;
-  console.log(JSON.stringify(event));
   const { id } = JSON.parse(body);
   const variables = { id };
 

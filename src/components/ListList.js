@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { closeMenu } from '../sagas/side-menu';
 import './ListList.css';
 import { findListByID } from '../sagas/achievements';
 

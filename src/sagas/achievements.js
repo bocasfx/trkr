@@ -1,5 +1,5 @@
 import { put, takeLeading } from 'redux-saga/effects';
-import { callLambda } from '../utils';
+import { callLambda, categorizeAchievements } from '../utils';
 
 const findListByID = id => ({
   type: 'FIND_LIST_BY_ID',
@@ -11,8 +11,8 @@ function* doFindListByID(action) {
   try {
     const response = yield callLambda('find-list-by-id', 'POST', JSON.stringify({ id }));
     const responseData = response.data.findListByID.achievements.data;
-
-    yield put({ type: 'FIND_LIST_BY_ID_SUCCESS', data: responseData });
+    const categorizedData = categorizeAchievements(responseData);
+    yield put({ type: 'FIND_LIST_BY_ID_SUCCESS', data: categorizedData });
   } catch (err) {
     yield put({ type: 'FIND_LIST_BY_ID_FAILURE' });
   }

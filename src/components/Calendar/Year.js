@@ -18,17 +18,18 @@ const Year = (props) => {
   const icon = viewFullYear ? 'remove_red_eye' : 'arrow_back';
 
   const monthElements = [];
-  for (let idx = from; idx < to; idx++) {
+  for (let month = from; month < to; month++) {
+    const monthAchievements = achievements[year] && achievements[year][month] ? achievements[year][month] : [];
     monthElements.push(
-      <div className="year__month-section" key={idx}>
+      <div className="year__month-section" key={month}>
         <div className="year__header-container">
-          <h2 className="year__calendar-header">{months[idx]}</h2>
-          <button type="button" onClick={onToggleFullYear(idx)} className="invisible-button">
+          <h2 className="year__calendar-header">{months[month]}</h2>
+          <button type="button" onClick={onToggleFullYear(month)} className="invisible-button">
             <i className="material-icons">{icon}</i>
           </button>
         </div>
         <Header />
-        <Month year={year} month={idx} achievements={achievements} viewFullYear={viewFullYear} />
+        <Month year={year} month={month} achievements={monthAchievements} viewFullYear={viewFullYear} />
       </div>,
     );
   }

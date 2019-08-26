@@ -1,12 +1,14 @@
 import React from 'react';
 import './Month.css';
 import PropTypes from 'prop-types';
+import { findAchievementIndex } from '../../utils';
 
 const Month = (props) => {
   const {
     year,
     month,
     viewFullYear,
+    achievements,
   } = props;
 
   const renderWeeks = () => {
@@ -19,12 +21,14 @@ const Month = (props) => {
     for (let rowIdx = 0; rowIdx < 5; rowIdx++) {
       const cells = [];
       for (let j = 0; j < 7; j++) {
-        if (rowIdx === 0 && j < firstDay) {
-          cells.push(<div key={j} />);
-        } else if (dateNumber > daysInMonth) {
+        if ((rowIdx === 0 && j < firstDay) || dateNumber > daysInMonth) {
           cells.push(<div key={j} />);
         } else {
-          cells.push(<div key={j}>{dateNumber}</div>);
+          const achievementClass = findAchievementIndex(achievements, dateNumber) >= 0 
+            ? 'month__achievement'
+            : '';
+
+          cells.push(<div className={achievementClass} key={j}>{dateNumber}</div>);
           dateNumber++;
         }
       }
