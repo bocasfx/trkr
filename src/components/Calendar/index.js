@@ -22,7 +22,7 @@ const Calendar = () => {
       monthElements.push(
         <div className="month-section" key={idx}>
           <div className="claendar-header-container">
-            <h1 className="calendar-header">{`${months[idx]} ${year}`}</h1>
+            <h2 className="calendar-header">{months[idx]}</h2>
             <i className="material-icons" onClick={setViewFullYear(idx)}>remove_red_eye</i>
           </div>
           <Header />
@@ -34,9 +34,12 @@ const Calendar = () => {
   };
 
   return (
-    <div className="calendar-container">
-      {renderMonths()}
-    </div>
+    <>
+      <h1>{year}</h1>
+      <div className="calendar-container">
+        {renderMonths()}
+      </div>
+    </>
   );
 };
 
