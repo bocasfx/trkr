@@ -13,12 +13,14 @@ const Calendar = () => {
   const { viewFullYear, viewMonth } = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
-  const setViewFullYear = showMonth => () => {
-    dispatch(displayFullYear(false, showMonth));
+  const toggleFullYear = showMonth => () => {
+    dispatch(displayFullYear(!viewFullYear, showMonth));
   };
 
   const from = viewFullYear ? 0 : viewMonth;
-  const to = viewFullYear ? 12 : viewMonth;
+  const to = viewFullYear ? 12 : viewMonth + 1;
+
+  const icon = viewFullYear ? 'remove_red_eye' : 'arrow_back';
 
   const renderMonths = () => {
     const monthElements = [];
@@ -27,8 +29,8 @@ const Calendar = () => {
         <div className="month-section" key={idx}>
           <div className="claendar-header-container">
             <h2 className="calendar-header">{months[idx]}</h2>
-            <button type="button" onClick={setViewFullYear(idx)} className="invisible-button">
-              <i className="material-icons">remove_red_eye</i>
+            <button type="button" onClick={toggleFullYear(idx)} className="invisible-button">
+              <i className="material-icons">{icon}</i>
             </button>
           </div>
           <Header />
