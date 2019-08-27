@@ -1,5 +1,6 @@
 import { put, takeLeading } from 'redux-saga/effects';
 import { callLambda, categorizeAchievements } from '../utils';
+import { setSelectedList } from './selected-list';
 
 const findListByID = id => ({
   type: 'FIND_LIST_BY_ID',
@@ -13,6 +14,7 @@ function* doFindListByID(action) {
     const responseData = response.data.findListByID.achievements.data;
     const categorizedData = categorizeAchievements(responseData);
     yield put({ type: 'FIND_LIST_BY_ID_SUCCESS', data: categorizedData });
+    yield put(setSelectedList(id));
   } catch (err) {
     yield put({ type: 'FIND_LIST_BY_ID_FAILURE' });
   }
@@ -24,17 +26,19 @@ function* watchFindListById() {
 
 // ------------------------------------------
 
-const createAchievement = (year, month, day) => ({
+const createAchievement = (year, month, day, list) => ({
   type: 'CREATE_ACHIEVEMENT',
   year,
   month,
   day,
+  list,
 });
 
 function* doCreateAchievement(achievement) {
   try {
     const response = yield callLambda('create-achievement', 'POST', achievement);
     console.log(response);
+    yield put({ type: 'CREATE_ACHIEVEMENT_SUCCESS', data: response });
   } catch (err) {
     yield put({ type: 'CREATE_ACHIEVEMENT_FAILURE' });
   }
@@ -51,6 +55,12 @@ const reducer = (state = [], action) => {
   switch (type) {
     case 'FIND_LIST_BY_ID_SUCCESS':
       return data;
+
+    case 'CREATE_ACHIEVEMENT_SUCCESS':
+      return [
+        ...state,
+        data,
+      ];
 
     default:
       return state;

@@ -62,10 +62,27 @@ const findListByID = gql`
   }
 `;
 
+const createAchievement = gql`
+  mutation($year: Int $month: Int $day: Int $list: ID) {
+    createAchievement(data: {
+      completed: true
+      year: $year
+      month: $month
+      day: $day
+      list: {
+        connect: $list
+      }
+    }) {
+      _id
+    }
+  }
+`;
+
 export {
   findUserByEmail,
   findUserById,
   findListByID,
   createUser,
   createList,
+  createAchievement,
 };

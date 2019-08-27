@@ -29,7 +29,9 @@ const Month = (props) => {
             <Day
               key={j}
               large={!viewFullYear}
-              dateNumber={dateNumber}
+              day={dateNumber}
+              month={month}
+              year={year}
               achievement={achievements[achievementIdx]}
             />,
           );

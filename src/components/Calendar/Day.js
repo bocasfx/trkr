@@ -1,15 +1,28 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Day.css';
+import { createAchievement } from '../../sagas/achievements';
 
-const Day = ({ dateNumber, achievement, large }) => {
+const Day = (props) => {
+  const {
+    day,
+    month,
+    year,
+    achievement,
+    large,
+  } = props;
+
+  const dispatch = useDispatch();
+  const selectedList = useSelector(state => state.selectedList);
+
   const toggleAchievement = () => {
-    if (dateNumber) {
-      console.log('toggle');
+    if (day) {
+      dispatch(createAchievement(day, month, year, selectedList));
     }
   };
 
-  if (!dateNumber) {
+  if (!day) {
     let blankClass = 'day__blank';
     blankClass += large ? ' day__large' : '';
     return <div className={blankClass} />;
@@ -20,19 +33,23 @@ const Day = ({ dateNumber, achievement, large }) => {
   buttonClass += large ? ' day__large' : '';
 
   return (
-    <button type="button" className={buttonClass} onClick={toggleAchievement}>{dateNumber}</button>
+    <button type="button" className={buttonClass} onClick={toggleAchievement}>{day}</button>
   );
 };
 
 Day.defaultProps = {
   achievement: null,
-  dateNumber: null,
+  day: null,
+  month: null,
+  year: null,
   large: false,
 };
 
 Day.propTypes = {
   large: PropTypes.bool,
-  dateNumber: PropTypes.number,
+  day: PropTypes.number,
+  month: PropTypes.number,
+  year: PropTypes.number,
   achievement: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
