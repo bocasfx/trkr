@@ -1,10 +1,10 @@
 import { generateHeaders } from './identity';
 
-const callLambda = (lambda, method = 'GET', body = '') => generateHeaders()
+const callLambda = (lambda, method = 'POST', body = '') => generateHeaders()
   .then(headers => fetch(`/.netlify/functions/${lambda}`, {
     method,
     headers,
-    body,
+    body: JSON.stringify(body),
   }))
   .then(response => response.text())
   .then(response => JSON.parse(response));

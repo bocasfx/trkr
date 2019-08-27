@@ -18,7 +18,7 @@ const Day = (props) => {
 
   const toggleAchievement = () => {
     if (day) {
-      dispatch(createAchievement(day, month, year, selectedList));
+      dispatch(createAchievement(year, month, day, selectedList));
     }
   };
 

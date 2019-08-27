@@ -74,6 +74,10 @@ const createAchievement = gql`
       }
     }) {
       _id
+      completed
+      year
+      month
+      day
     }
   }
 `;

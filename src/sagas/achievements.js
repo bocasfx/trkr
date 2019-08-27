@@ -10,8 +10,9 @@ const findListByID = id => ({
 function* doFindListByID(action) {
   const { id } = action;
   try {
-    const response = yield callLambda('find-list-by-id', 'POST', JSON.stringify({ id }));
+    const response = yield callLambda('find-list-by-id', 'POST', { id });
     const responseData = response.data.findListByID.achievements.data;
+    console.log(responseData);
     const categorizedData = categorizeAchievements(responseData);
     yield put({ type: 'FIND_LIST_BY_ID_SUCCESS', data: categorizedData });
     yield put(setSelectedList(id));
