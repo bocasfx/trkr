@@ -1,4 +1,4 @@
-const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const months = [
   'January',
   'February',

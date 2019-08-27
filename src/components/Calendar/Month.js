@@ -1,6 +1,7 @@
 import React from 'react';
 import './Month.css';
 import PropTypes from 'prop-types';
+import shortId from 'shortid';
 import { findAchievementIndex } from '../../utils';
 import Day from './Day';
 
@@ -22,12 +23,12 @@ const Month = (props) => {
       const cells = [];
       for (let j = 0; j < 7; j++) {
         if ((rowIdx === 0 && j < firstDay) || dateNumber > daysInMonth) {
-          cells.push(<Day key={j} large={!viewFullYear} />);
+          cells.push(<Day key={shortId.generate()} large={!viewFullYear} />);
         } else {
           const achievementIdx = findAchievementIndex(achievements, dateNumber);
           cells.push(
             <Day
-              key={j}
+              key={shortId.generate()}
               large={!viewFullYear}
               day={dateNumber}
               month={month}
