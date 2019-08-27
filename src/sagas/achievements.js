@@ -22,6 +22,30 @@ function* watchFindListById() {
   yield takeLeading('FIND_LIST_BY_ID', doFindListByID);
 }
 
+// ------------------------------------------
+
+const createAchievement = (year, month, day) => ({
+  type: 'CREATE_ACHIEVEMENT',
+  year,
+  month,
+  day,
+});
+
+function* doCreateAchievement(achievement) {
+  try {
+    const response = yield callLambda('create-achievement', 'POST', achievement);
+    console.log(response);
+  } catch (err) {
+    yield put({ type: 'CREATE_ACHIEVEMENT_FAILURE' });
+  }
+}
+
+function* watchCreateAchievement() {
+  yield takeLeading('CREATE_ACHIEVEMENT', doCreateAchievement);
+}
+
+// ------------------------------------------
+
 const reducer = (state = [], action) => {
   const { type, data } = action;
   switch (type) {
@@ -36,5 +60,7 @@ const reducer = (state = [], action) => {
 export {
   findListByID,
   watchFindListById,
+  createAchievement,
+  watchCreateAchievement,
   reducer,
 };
