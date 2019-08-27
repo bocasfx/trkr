@@ -12,7 +12,6 @@ exports.handler = (event, context, callback) => {
   }
 
   const { body } = event;
-  console.log(body);
   const {
     year,
     month,

@@ -6,6 +6,7 @@ import { reducer as lists } from './lists';
 import { reducer as sideMenu } from './side-menu';
 import { reducer as settings } from './settings';
 import { reducer as selectedList } from './selected-list';
+import { reducer as error } from './error';
 
 function* rootSaga() {
   yield all([
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   achievements,
   settings,
   selectedList,
+  error,
 });
 
 export {

@@ -19,9 +19,24 @@ class GQLClient {
       },
     }));
 
+    const defaultOptions = {
+      watchQuery: {
+        fetchPolicy: 'cache-and-network',
+        errorPolicy: 'ignore',
+      },
+      query: {
+        fetchPolicy: 'network-only',
+        errorPolicy: 'all',
+      },
+      mutate: {
+        errorPolicy: 'all',
+      },
+    };
+
     this.client = new ApolloClient({
       link: authLink.concat(httpLink),
       cache: new InMemoryCache(),
+      defaultOptions,
     });
   }
 }

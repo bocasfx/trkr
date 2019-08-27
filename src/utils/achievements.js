@@ -18,4 +18,21 @@ const categorizeAchievements = (achievements) => {
 
 const findAchievementIndex = (achievements, day) => findIndex(achievements, { day });
 
-export { categorizeAchievements, findAchievementIndex };
+const addAchievement = (achievements, achievement) => {
+  const newAchievements = { ...achievements };
+  const { year, month } = achievement;
+  const yearExists = newAchievements[year];
+  if (!yearExists) {
+    newAchievements[year] = {};
+  }
+  const monthExists = newAchievements[year][month];
+
+  if (!monthExists) {
+    newAchievements[year][month] = [];
+  }
+
+  newAchievements[year][month].push(achievement);
+  return newAchievements;
+}
+
+export { categorizeAchievements, findAchievementIndex, addAchievement };

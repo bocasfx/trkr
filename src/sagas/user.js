@@ -20,8 +20,8 @@ function* doFindUserByEmail() {
 
     const listId = responseData.lists.data[0]._id; // eslint-disable-line no-underscore-dangle
     yield put(findListByID(listId));
-  } catch (err) {
-    yield put({ type: 'FIND_USER_BY_EMAIL_FAILURE' });
+  } catch (error) {
+    yield put({ type: 'ERROR', error });
   }
 }
 
