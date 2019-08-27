@@ -22,10 +22,17 @@ const Month = (props) => {
       const cells = [];
       for (let j = 0; j < 7; j++) {
         if ((rowIdx === 0 && j < firstDay) || dateNumber > daysInMonth) {
-          cells.push(<Day key={j} />);
+          cells.push(<Day key={j} large={!viewFullYear} />);
         } else {
           const achievementIdx = findAchievementIndex(achievements, dateNumber);
-          cells.push(<Day key={j} large={!viewFullYear} dateNumber={dateNumber} achievement={achievements[achievementIdx]} />);
+          cells.push(
+            <Day
+              key={j}
+              large={!viewFullYear}
+              dateNumber={dateNumber}
+              achievement={achievements[achievementIdx]}
+            />,
+          );
           dateNumber++;
         }
       }

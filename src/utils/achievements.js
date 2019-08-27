@@ -16,6 +16,6 @@ const categorizeAchievements = (achievements) => {
   return categorizedAchievements;
 };
 
-const findAchievementIndex = (achievements, day) => findIndex(achievements, { day })
+const findAchievementIndex = (achievements, day) => findIndex(achievements, { day });
 
 export { categorizeAchievements, findAchievementIndex };

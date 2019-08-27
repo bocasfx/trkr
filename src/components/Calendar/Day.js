@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './Day.css';
 
 const Day = ({ dateNumber, achievement, large }) => {
-
   const toggleAchievement = () => {
     if (dateNumber) {
       console.log('toggle');
@@ -11,7 +10,9 @@ const Day = ({ dateNumber, achievement, large }) => {
   };
 
   if (!dateNumber) {
-    return <div className="day__blank" />;
+    let blankClass = 'day__blank';
+    blankClass += large ? ' day__large' : '';
+    return <div className={blankClass} />;
   }
 
   let buttonClass = 'day__button';

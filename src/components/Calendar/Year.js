@@ -19,7 +19,9 @@ const Year = (props) => {
 
   const monthElements = [];
   for (let month = from; month < to; month++) {
-    const monthAchievements = achievements[year] && achievements[year][month] ? achievements[year][month] : [];
+    const monthAchievements = achievements[year] && achievements[year][month]
+      ? achievements[year][month]
+      : [];
     monthElements.push(
       <div className="year__month-section" key={month}>
         <div className="year__header-container">
@@ -29,7 +31,12 @@ const Year = (props) => {
           </button>
         </div>
         <Header />
-        <Month year={year} month={month} achievements={monthAchievements} viewFullYear={viewFullYear} />
+        <Month
+          year={year}
+          month={month}
+          achievements={monthAchievements}
+          viewFullYear={viewFullYear}
+        />
       </div>,
     );
   }
