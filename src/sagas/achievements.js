@@ -1,4 +1,4 @@
-import { put, takeLeading } from 'redux-saga/effects';
+import { put, takeLeading, takeEvery } from 'redux-saga/effects';
 import {
   callLambda,
   categorizeAchievements,
@@ -49,7 +49,7 @@ function* doCreateAchievement(achievement) {
 }
 
 function* watchCreateAchievement() {
-  yield takeLeading('CREATE_ACHIEVEMENT', doCreateAchievement);
+  yield takeEvery('CREATE_ACHIEVEMENT', doCreateAchievement);
 }
 
 // ------------------------------------------
@@ -71,7 +71,7 @@ function* doDeleteAchievement(action) {
 }
 
 function* watchDeleteAchievement() {
-  yield takeLeading('DELETE_ACHIEVEMENT', doDeleteAchievement);
+  yield takeEvery('DELETE_ACHIEVEMENT', doDeleteAchievement);
 }
 
 // ------------------------------------------
