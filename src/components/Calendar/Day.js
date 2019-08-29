@@ -13,7 +13,7 @@ const Day = (props) => {
     large,
   } = props;
 
-  const [hasAchievement, setHasAchievement] = useState(!!achievement);
+  const [hasAchievement] = useState(!!achievement);
   const dispatch = useDispatch();
   const selectedList = useSelector(state => state.selectedList);
 
@@ -23,7 +23,7 @@ const Day = (props) => {
     if (!hasAchievement) {
       dispatch(createAchievement(year, month, day, selectedList));
     } else {
-      dispatch(deleteAchievement(achievement._id));
+      dispatch(deleteAchievement(achievement));
     }
   };
 

@@ -33,6 +33,21 @@ const addAchievement = (achievements, achievement) => {
 
   newAchievements[year][month].push(achievement);
   return newAchievements;
-}
+};
 
-export { categorizeAchievements, findAchievementIndex, addAchievement };
+const removeAchievement = (achievements, achievement) => {
+  const newAchievements = { ...achievements };
+  const { day, month, year } = achievement;
+  const newMonth = newAchievements[year][month].filter(achvmnt => achvmnt.day !== day);
+
+  newAchievements[year][month] = newMonth;
+
+  return newAchievements;
+};
+
+export {
+  categorizeAchievements,
+  findAchievementIndex,
+  addAchievement,
+  removeAchievement,
+};

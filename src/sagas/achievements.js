@@ -1,5 +1,10 @@
 import { put, takeLeading } from 'redux-saga/effects';
-import { callLambda, categorizeAchievements, addAchievement } from '../utils';
+import {
+  callLambda,
+  categorizeAchievements,
+  addAchievement,
+  removeAchievement,
+} from '../utils';
 import { setSelectedList } from './selected-list';
 
 const findListByID = id => ({
@@ -49,18 +54,18 @@ function* watchCreateAchievement() {
 
 // ------------------------------------------
 
-const deleteAchievement = (id) => ({
+const deleteAchievement = achievement => ({
   type: 'DELETE_ACHIEVEMENT',
-  data: id,
+  data: achievement,
 });
 
 function* doDeleteAchievement(action) {
-  const id = action.data;
+  const achievement = action.data;
+  const { _id } = achievement;
   try {
-    yield callLambda('delete-achievement', 'POST', { id });
-    yield put({ type: 'DELETE_ACHIEVEMENT_SUCCESS' }); // eslint-disable-line no-underscore-dangle
+    yield callLambda('delete-achievement', 'POST', { id: _id });
+    yield put({ type: 'DELETE_ACHIEVEMENT_SUCCESS', data: achievement });
   } catch (error) {
-    console.log(error);
     yield put({ type: 'ERROR', error });
   }
 }
@@ -81,8 +86,7 @@ const reducer = (state = {}, action) => {
       return addAchievement(state, data);
 
     case 'DELETE_ACHIEVEMENT_SUCCESS':
-      // return removeAchievement(state, data);
-      return state;
+      return removeAchievement(state, data);
 
     default:
       return state;
