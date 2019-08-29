@@ -82,6 +82,14 @@ const createAchievement = gql`
   }
 `;
 
+const deleteAchievement = gql`
+  mutation($id: ID!) {
+    deleteAchievement(id: $id) {
+      _id
+    }
+  }
+`;
+
 export {
   findUserByEmail,
   findUserById,
@@ -89,4 +97,5 @@ export {
   createUser,
   createList,
   createAchievement,
+  deleteAchievement,
 };

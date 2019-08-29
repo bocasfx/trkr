@@ -49,6 +49,28 @@ function* watchCreateAchievement() {
 
 // ------------------------------------------
 
+const deleteAchievement = (id) => ({
+  type: 'DELETE_ACHIEVEMENT',
+  data: id,
+});
+
+function* doDeleteAchievement(action) {
+  const id = action.data;
+  try {
+    yield callLambda('delete-achievement', 'POST', { id });
+    yield put({ type: 'DELETE_ACHIEVEMENT_SUCCESS' }); // eslint-disable-line no-underscore-dangle
+  } catch (error) {
+    console.log(error);
+    yield put({ type: 'ERROR', error });
+  }
+}
+
+function* watchDeleteAchievement() {
+  yield takeLeading('DELETE_ACHIEVEMENT', doDeleteAchievement);
+}
+
+// ------------------------------------------
+
 const reducer = (state = {}, action) => {
   const { type, data } = action;
   switch (type) {
@@ -57,6 +79,10 @@ const reducer = (state = {}, action) => {
 
     case 'CREATE_ACHIEVEMENT_SUCCESS':
       return addAchievement(state, data);
+
+    case 'DELETE_ACHIEVEMENT_SUCCESS':
+      // return removeAchievement(state, data);
+      return state;
 
     default:
       return state;
@@ -68,5 +94,7 @@ export {
   watchFindListById,
   createAchievement,
   watchCreateAchievement,
+  deleteAchievement,
+  watchDeleteAchievement,
   reducer,
 };

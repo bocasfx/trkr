@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Day.css';
-import { createAchievement } from '../../sagas/achievements';
+import { createAchievement, deleteAchievement } from '../../sagas/achievements';
 
 const Day = (props) => {
   const {
@@ -13,12 +13,17 @@ const Day = (props) => {
     large,
   } = props;
 
+  const [hasAchievement, setHasAchievement] = useState(!!achievement);
   const dispatch = useDispatch();
   const selectedList = useSelector(state => state.selectedList);
 
+  // setHasAchievement(!!achievement);
+
   const toggleAchievement = () => {
-    if (day) {
+    if (!hasAchievement) {
       dispatch(createAchievement(year, month, day, selectedList));
+    } else {
+      dispatch(deleteAchievement(achievement._id));
     }
   };
 
