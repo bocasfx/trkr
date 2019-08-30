@@ -4,6 +4,7 @@ import {
   categorizeAchievements,
   addAchievement,
   removeAchievement,
+  updateAchievement,
 } from '../utils';
 import { setSelectedList } from './selected-list';
 
@@ -31,15 +32,13 @@ function* watchFindListById() {
 
 // ------------------------------------------
 
-const createAchievement = (year, month, day, list) => ({
+const createAchievement = achievement => ({
   type: 'CREATE_ACHIEVEMENT',
-  year,
-  month,
-  day,
-  list,
+  data: achievement,
 });
 
-function* doCreateAchievement(achievement) {
+function* doCreateAchievement(action) {
+  const achievement = action.data;
   try {
     const response = yield callLambda('create-achievement', 'POST', achievement);
     yield put({ type: 'CREATE_ACHIEVEMENT_SUCCESS', data: response.data.createAchievement });
@@ -82,8 +81,25 @@ const reducer = (state = {}, action) => {
     case 'FIND_LIST_BY_ID_SUCCESS':
       return data;
 
+    case 'CREATE_ACHIEVEMENT':
+      return addAchievement(state, {
+        ...data,
+        completed: false,
+        pending: true,
+      });
+
     case 'CREATE_ACHIEVEMENT_SUCCESS':
-      return addAchievement(state, data);
+      return addAchievement(removeAchievement(state, data), {
+        ...data,
+        pending: false,
+      });
+
+    case 'DELETE_ACHIEVEMENT':
+      return updateAchievement(state, {
+        ...data,
+        completed: true,
+        pending: true,
+      });
 
     case 'DELETE_ACHIEVEMENT_SUCCESS':
       return removeAchievement(state, data);

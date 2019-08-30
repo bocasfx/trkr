@@ -21,7 +21,13 @@ const Day = (props) => {
 
   const toggleAchievement = () => {
     if (!hasAchievement) {
-      dispatch(createAchievement(year, month, day, selectedList));
+      const newAchievement = {
+        year,
+        month,
+        day,
+        list: selectedList,
+      };
+      dispatch(createAchievement(newAchievement));
     } else {
       dispatch(deleteAchievement(achievement));
     }
@@ -33,14 +39,22 @@ const Day = (props) => {
     return <div className={blankClass} />;
   }
 
+  const pending = (achievement && achievement.pending) || false;
+  const completed = (achievement && achievement.completed) || false;
+
   let buttonClass = 'day__button';
-  buttonClass += achievement ? ' day__achievement' : '';
+  buttonClass += completed ? ' day__achievement' : '';
   buttonClass += large ? ' day__large' : '';
+
+  let spinnerClass = 'spinner';
+  spinnerClass += pending ? ' spinner-animation' : '';
+
+  const onClick = pending ? null : toggleAchievement;
 
   return (
 
-    <button type="button" className={buttonClass} onClick={toggleAchievement}>
-      <div className="spinner" />
+    <button type="button" className={buttonClass} onClick={onClick}>
+      <div className={spinnerClass} />
       <div>{day}</div>
     </button>
   );
@@ -60,12 +74,11 @@ Day.propTypes = {
   month: PropTypes.number,
   year: PropTypes.number,
   achievement: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     month: PropTypes.number.isRequired,
     day: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
-    __typename: PropTypes.string.isRequired,
+    pending: PropTypes.bool,
   }),
 };
 

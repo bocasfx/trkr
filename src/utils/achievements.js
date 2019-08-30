@@ -45,9 +45,22 @@ const removeAchievement = (achievements, achievement) => {
   return newAchievements;
 };
 
+const updateAchievement = (achievements, achievement) => {
+  const newAchievements = { ...achievements };
+  const { day, month, year } = achievement;
+  const idx = findAchievementIndex(newAchievements[year][month], day);
+  const existingAchievement = newAchievements[year][month][idx];
+  newAchievements[year][month][idx] = {
+    ...existingAchievement,
+    ...achievement,
+  };
+  return newAchievements;
+};
+
 export {
   categorizeAchievements,
   findAchievementIndex,
   addAchievement,
   removeAchievement,
+  updateAchievement,
 };
