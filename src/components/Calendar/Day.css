@@ -1,12 +1,16 @@
 .day__blank {
+  position: relative;
   width: 30px;
   height: 30px;
+  margin: 16px 4px 0;
   outline: none;
 }
 
 .day__button {
+  position: relative;
   width: 30px;
   height: 30px;
+  margin: 16px 4px 0;
   padding: 8px;
   border: 1px solid #eee;
   border-radius: 50%;
@@ -28,12 +32,17 @@
 }
 
 .spinner {
-  margin: 16px 4px 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  margin: 0;
   border-radius: 100%;
 }
 
 .spinner-animation {
-  background-color: #333;
+  background-color: orangered;
   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }
