@@ -1,7 +1,6 @@
 .day__blank {
   width: 30px;
   height: 30px;
-  margin: 16px 4px 0;
   outline: none;
 }
 
@@ -9,7 +8,6 @@
   width: 30px;
   height: 30px;
   padding: 8px;
-  margin: 16px 4px 0;
   border: 1px solid #eee;
   border-radius: 50%;
   text-align: center;
@@ -27,4 +25,34 @@
   width: 72px;
   height: 72px;
   margin: 16px;
+}
+
+.spinner {
+  margin: 16px 4px 0;
+  border-radius: 100%;
+}
+
+.spinner-animation {
+  background-color: #333;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }

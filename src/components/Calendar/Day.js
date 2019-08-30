@@ -38,7 +38,9 @@ const Day = (props) => {
   buttonClass += large ? ' day__large' : '';
 
   return (
-    <button type="button" className={buttonClass} onClick={toggleAchievement}>{day}</button>
+    <div className="spinner">
+      <button type="button" className={buttonClass} onClick={toggleAchievement}>{day}</button>
+    </div>
   );
 };
 
