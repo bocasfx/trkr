@@ -1,0 +1,14 @@
+.add_tracker_modal__button {
+  border: 1px solid #eee;
+  border-radius: 50%;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.add_tracker_modal__button div {
+  color: #eee;
+}
