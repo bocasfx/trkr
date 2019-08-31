@@ -1,12 +1,18 @@
 import { all } from 'redux-saga/effects';
 import { combineReducers } from 'redux';
 import { watchFindUserByEmail, reducer as user } from './user';
-import { watchFindListById, watchCreateAchievement, watchDeleteAchievement, reducer as achievements } from './achievements';
+import {
+  watchFindListById,
+  watchCreateAchievement,
+  watchDeleteAchievement,
+  reducer as achievements,
+} from './achievements';
 import { reducer as lists } from './lists';
 import { reducer as sideMenu } from './side-menu';
 import { reducer as settings } from './settings';
 import { reducer as selectedList } from './selected-list';
 import { reducer as error } from './error';
+import { reducer as loader } from './loader';
 
 function* rootSaga() {
   yield all([
@@ -25,9 +31,7 @@ const rootReducer = combineReducers({
   settings,
   selectedList,
   error,
+  loader,
 });
 
-export {
-  rootSaga,
-  rootReducer,
-};
+export { rootSaga, rootReducer };

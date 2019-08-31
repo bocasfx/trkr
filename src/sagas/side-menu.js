@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
         isOpen,
       };
 
-    case 'FIND_LIST_BY_ID_SUCCESS':
+    case 'FIND_LIST_BY_ID':
       return {
         isOpen: false,
       };

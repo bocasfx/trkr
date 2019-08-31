@@ -7,14 +7,19 @@ import {
   updateAchievement,
 } from '../utils';
 import { setSelectedList } from './selected-list';
+import { showLoader, hideLoader } from './loader';
 
-const findListByID = id => ({
+const findListByID = (id, withLoader = true) => ({
   type: 'FIND_LIST_BY_ID',
   id,
+  withLoader,
 });
 
 function* doFindListByID(action) {
-  const { id } = action;
+  const { id, withLoader } = action;
+  if (withLoader) {
+    yield put(showLoader());
+  }
   try {
     const response = yield callLambda('find-list-by-id', 'POST', { id });
     const responseData = response.data.findListByID.achievements.data;
@@ -23,6 +28,9 @@ function* doFindListByID(action) {
     yield put(setSelectedList(id));
   } catch (error) {
     yield put({ type: 'ERROR', error });
+  }
+  if (withLoader) {
+    yield put(hideLoader());
   }
 }
 

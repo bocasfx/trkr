@@ -22,7 +22,8 @@
 }
 
 .day__achievement {
-  background-color: #eee;
+  background-color: orangered;
+  color: #fff;
 }
 
 .day__large {
@@ -48,7 +49,9 @@
 }
 
 @-webkit-keyframes sk-scaleout {
-  0% { -webkit-transform: scale(0) }
+  0% {
+    -webkit-transform: scale(0)
+  }
   100% {
     -webkit-transform: scale(1.0);
     opacity: 0;
