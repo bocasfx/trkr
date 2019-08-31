@@ -1,12 +1,12 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { useDispatch, useSelector } from 'react-redux';
-import ListList from './ListList';
+import TrackerList from './TrackerList';
 import { toggleMenu } from '../sagas/side-menu';
 import './SideMenu.css';
 
 const SideMenu = () => {
-  const lists = useSelector(state => state.lists);
+  const trackers = useSelector(state => state.trackers);
   const isOpen = useSelector(state => state.sideMenu.isOpen);
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const SideMenu = () => {
   return (
     <Menu onStateChange={onMenuStateChange} isOpen={isOpen}>
       <h1>Trackers</h1>
-      <ListList lists={lists} />
+      <TrackerList trackers={trackers} />
     </Menu>
   );
 };

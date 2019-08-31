@@ -1,12 +1,12 @@
-const setSelectedList = listId => ({
-  type: 'SET_SELECTED_LIST',
-  id: listId,
+const setSelectedTracker = trackerId => ({
+  type: 'SET_SELECTED_TRACKER',
+  id: trackerId,
 });
 
 const reducer = (state = null, action) => {
   const { type, id } = action;
   switch (type) {
-    case 'SET_SELECTED_LIST':
+    case 'SET_SELECTED_TRACKER':
       return id;
 
     default:
@@ -15,6 +15,6 @@ const reducer = (state = null, action) => {
 };
 
 export {
-  setSelectedList,
+  setSelectedTracker,
   reducer,
 };

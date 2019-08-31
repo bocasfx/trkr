@@ -16,14 +16,14 @@ exports.handler = (event, context, callback) => {
     year,
     month,
     day,
-    list,
+    tracker,
   } = JSON.parse(body);
 
   const variables = {
     year,
     month,
     day,
-    list,
+    tracker,
   };
 
   gqlClient

@@ -5,7 +5,7 @@ const findUserByEmail = gql`
     findUserByEmail(email: $email) {
       _id
       email
-      lists {
+      trackers {
         data {
           name
           _id
@@ -20,7 +20,7 @@ const findUserById = gql`
     findUserById(id: $id) {
       name
       _id
-      lists {
+      trackers {
         data {
           name
           _id
@@ -38,17 +38,17 @@ const createUser = gql`
   }
 `;
 
-const createList = gql`
-  mutation createList($name: String!) {
-    createList(data: { name: $name }) {
+const createTracker = gql`
+  mutation createTracker($name: String!) {
+    createTracker(data: { name: $name }) {
       _id
     }
   }
 `;
 
-const findListByID = gql`
-  query findListByID($id: ID!) {
-    findListByID(id: $id) {
+const findTrackerByID = gql`
+  query findTrackerByID($id: ID!) {
+    findTrackerByID(id: $id) {
       achievements {
         data {
           _id
@@ -63,14 +63,14 @@ const findListByID = gql`
 `;
 
 const createAchievement = gql`
-  mutation($year: Int $month: Int $day: Int $list: ID) {
+  mutation($year: Int $month: Int $day: Int $tracker: ID) {
     createAchievement(data: {
       completed: true
       year: $year
       month: $month
       day: $day
-      list: {
-        connect: $list
+      tracker: {
+        connect: $tracker
       }
     }) {
       _id
@@ -93,9 +93,9 @@ const deleteAchievement = gql`
 export {
   findUserByEmail,
   findUserById,
-  findListByID,
+  findTrackerByID,
   createUser,
-  createList,
+  createTracker,
   createAchievement,
   deleteAchievement,
 };

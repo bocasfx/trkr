@@ -6,26 +6,26 @@ import {
   removeAchievement,
   updateAchievement,
 } from '../utils';
-import { setSelectedList } from './selected-list';
+import { setSelectedTracker } from './selected-tracker';
 import { showLoader, hideLoader } from './loader';
 
-const findListByID = (id, withLoader = true) => ({
-  type: 'FIND_LIST_BY_ID',
+const findTrackerByID = (id, withLoader = true) => ({
+  type: 'FIND_TRACKER_BY_ID',
   id,
   withLoader,
 });
 
-function* doFindListByID(action) {
+function* doFindTrackerByID(action) {
   const { id, withLoader } = action;
   if (withLoader) {
     yield put(showLoader());
   }
   try {
-    const response = yield callLambda('find-list-by-id', 'POST', { id });
-    const responseData = response.data.findListByID.achievements.data;
+    const response = yield callLambda('find-tracker-by-id', 'POST', { id });
+    const responseData = response.data.findTrackerByID.achievements.data;
     const categorizedData = categorizeAchievements(responseData);
-    yield put({ type: 'FIND_LIST_BY_ID_SUCCESS', data: categorizedData });
-    yield put(setSelectedList(id));
+    yield put({ type: 'FIND_TRACKER_BY_ID_SUCCESS', data: categorizedData });
+    yield put(setSelectedTracker(id));
   } catch (error) {
     yield put({ type: 'ERROR', error });
   }
@@ -34,8 +34,8 @@ function* doFindListByID(action) {
   }
 }
 
-function* watchFindListById() {
-  yield takeLeading('FIND_LIST_BY_ID', doFindListByID);
+function* watchFindTrackerById() {
+  yield takeLeading('FIND_TRACKER_BY_ID', doFindTrackerByID);
 }
 
 // ------------------------------------------
@@ -86,7 +86,7 @@ function* watchDeleteAchievement() {
 const reducer = (state = {}, action) => {
   const { type, data } = action;
   switch (type) {
-    case 'FIND_LIST_BY_ID_SUCCESS':
+    case 'FIND_TRACKER_BY_ID_SUCCESS':
       return data;
 
     case 'CREATE_ACHIEVEMENT':
@@ -118,8 +118,8 @@ const reducer = (state = {}, action) => {
 };
 
 export {
-  findListByID,
-  watchFindListById,
+  findTrackerByID,
+  watchFindTrackerById,
   createAchievement,
   watchCreateAchievement,
   deleteAchievement,

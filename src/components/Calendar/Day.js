@@ -15,7 +15,7 @@ const Day = (props) => {
 
   const [hasAchievement] = useState(!!achievement);
   const dispatch = useDispatch();
-  const selectedList = useSelector(state => state.selectedList);
+  const selectedTracker = useSelector(state => state.selectedTracker);
 
   // setHasAchievement(!!achievement);
 
@@ -25,7 +25,7 @@ const Day = (props) => {
         year,
         month,
         day,
-        list: selectedList,
+        tracker: selectedTracker,
       };
       dispatch(createAchievement(newAchievement));
     } else {

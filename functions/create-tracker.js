@@ -1,6 +1,5 @@
 import gqlClient from './GraphQL/GQLClient';
-import { findListByID as query } from './GraphQL/queries';
-
+import { createTracker as mutation } from './GraphQL/queries';
 
 exports.handler = (event, context, callback) => {
   const { identity, user } = context.clientContext;
@@ -23,11 +22,11 @@ exports.handler = (event, context, callback) => {
   }
 
   const { body } = event;
-  const { id } = JSON.parse(body);
-  const variables = { id };
+  const { name } = JSON.parse(body);
 
+  const variables = { name };
   gqlClient
-    .query({ query, variables })
+    .mutate({ mutation, variables })
     .then((response) => {
       callback(null, {
         statusCode: 200,

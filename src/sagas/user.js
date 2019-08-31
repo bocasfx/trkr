@@ -1,6 +1,6 @@
 import { put, takeLeading } from 'redux-saga/effects';
 import { callLambda } from '../utils';
-import { findListByID } from './achievements';
+import { findTrackerByID } from './achievements';
 import { showLoader, hideLoader } from './loader';
 
 const findUserByEmail = () => ({
@@ -21,8 +21,8 @@ function* doFindUserByEmail() {
 
     yield put({ type: 'FIND_USER_BY_EMAIL_SUCCESS', data: responseData });
 
-    const listId = responseData.lists.data[0]._id; // eslint-disable-line no-underscore-dangle
-    yield put(findListByID(listId, false));
+    const trackerId = responseData.trackers.data[0]._id; // eslint-disable-line no-underscore-dangle
+    yield put(findTrackerByID(trackerId, false));
   } catch (error) {
     yield put({ type: 'ERROR', error });
   }

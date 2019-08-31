@@ -1,18 +1,18 @@
-.list-list-container {
+.tracker-list-container {
   padding: 0
 }
 
-.list-list-container li {
+.tracker-list-container li {
   list-style-type: none;
   border-top: 1px solid #eeeeee33;
   padding: 16px 0;
 }
 
-.list-list-container li:last-child {
+.tracker-list-container li:last-child {
   border-bottom: 1px solid #eeeeee33;
 }
 
-.list-list-container button {
+.tracker-list-container button {
   border: none;
   background: transparent;
   font-size: 0.9em;

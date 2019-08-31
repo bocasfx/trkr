@@ -3,10 +3,10 @@ type Achievement {
   year: Int
   month: Int
   day: Int
-  list: List
+  tracker: Tracker
 }
 
-type List {
+type Tracker {
   name: String!
   user: User
   achievements: [Achievement] @relation
@@ -14,7 +14,7 @@ type List {
 
 type User {
   email: String!
-  lists: [List] @relation
+  trackers: [Tracker] @relation
 }
 
 type Query {
