@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import './TrackerList.css';
 import { findTrackerByID } from '../sagas/achievements';
+import TrackerListHeader from './TrackerListHeader';
 
 const TrackerList = (props) => {
   const { trackers } = props;
   const dispatch = useDispatch();
 
   const onTrackerSelection = trackerId => () => {
-    // dispatch(closeMenu());
     dispatch(findTrackerByID(trackerId));
   };
 
@@ -19,7 +19,14 @@ const TrackerList = (props) => {
     </li>
   ));
 
-  return <ul className="tracker-list-container">{renderTrackers()}</ul>;
+  return (
+    <>
+      <TrackerListHeader />
+      <ul className="tracker-list-container">
+        {renderTrackers()}
+      </ul>
+    </>
+  );
 };
 
 TrackerList.propTypes = {

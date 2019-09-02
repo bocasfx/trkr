@@ -2,7 +2,7 @@ import React from 'react';
 import './Loader.css';
 
 const Loader = () => (
-  <div className="loader">
+  <div className="blanket">
     <div className="loader-text">Wait for it...</div>
     <div className="main-spinner">
       <div className="double-bounce1" />

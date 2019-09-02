@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import TrackerList from './TrackerList';
 import { toggleMenu } from '../sagas/side-menu';
 import './SideMenu.css';
-import AddTrackerModal from './AddTrackerModal';
 
 const SideMenu = () => {
   const trackers = useSelector(state => state.trackers);
@@ -17,10 +16,6 @@ const SideMenu = () => {
 
   return (
     <Menu onStateChange={onMenuStateChange} isOpen={isOpen}>
-      <div className="side_menu__header">
-        <h1>Trackers</h1>
-        <AddTrackerModal />
-      </div>
       <TrackerList trackers={trackers} />
     </Menu>
   );
