@@ -7,7 +7,7 @@ import {
   watchDeleteAchievement,
   reducer as achievements,
 } from './achievements';
-import { reducer as trackers } from './trackers';
+import { reducer as trackers, watchCreateTracker } from './trackers';
 import { reducer as sideMenu } from './side-menu';
 import { reducer as settings } from './settings';
 import { reducer as selectedTracker } from './selected-tracker';
@@ -20,6 +20,7 @@ function* rootSaga() {
     watchFindTrackerById(),
     watchCreateAchievement(),
     watchDeleteAchievement(),
+    watchCreateTracker(),
   ]);
 }
 

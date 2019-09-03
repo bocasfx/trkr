@@ -39,8 +39,8 @@ const createUser = gql`
 `;
 
 const createTracker = gql`
-  mutation createTracker($name: String!) {
-    createTracker(data: { name: $name }) {
+  mutation createTracker($name: String!, $id: ID!) {
+    createTracker(data: { name: $name, user: { connect: $id } }) {
       _id
     }
   }

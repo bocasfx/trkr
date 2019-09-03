@@ -22,9 +22,11 @@ exports.handler = (event, context, callback) => {
   }
 
   const { body } = event;
-  const { name } = JSON.parse(body);
+  const { name, id } = JSON.parse(body);
 
-  const variables = { name };
+  console.log(name, id);
+
+  const variables = { name, id };
   gqlClient
     .mutate({ mutation, variables })
     .then((response) => {

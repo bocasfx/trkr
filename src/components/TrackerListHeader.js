@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import './TrackerListHeader.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { createTracker } from '../sagas/trackers';
 
 const TrackerListHeader = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { id } = useSelector(state => state.user);
+
+  const addTracker = () => {
+    dispatch(createTracker('hello', id));
+  };
 
   const renderForm = () => {
     let formClass = 'tracker_list_header__form';
@@ -10,7 +18,7 @@ const TrackerListHeader = () => {
     return (
       <div className={formClass}>
         <input />
-        <button type="button" onClick={() => setOpen(false)}>Add</button>
+        <button type="button" onClick={addTracker}>Add</button>
       </div>
     )
   };
