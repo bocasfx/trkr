@@ -39,7 +39,7 @@ function* doDeleteTracker(action) {
   const { id } = action;
   try {
     yield callLambda('delete-tracker', 'POST', { id });
-    yield put({ type: 'DELETE_TRACKER_SUCCESS' });
+    yield put({ type: 'DELETE_TRACKER_SUCCESS', data: id });
   } catch (error) {
     yield put({ type: 'ERROR', error });
   }

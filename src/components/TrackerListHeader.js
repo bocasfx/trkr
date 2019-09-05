@@ -10,7 +10,7 @@ const TrackerListHeader = () => {
   const { id } = useSelector(mainState => mainState.user);
 
   const addTracker = () => {
-    if (trackerName.length) {
+    if (trackerName && trackerName.length) {
       dispatch(createTracker(trackerName, id));
     }
   };
