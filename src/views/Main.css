@@ -1,0 +1,15 @@
+.main__no-trackers {
+  margin-top: 64px;
+  padding-top: 128px;
+  text-align: center;
+}
+
+.main__no-trackers i {
+  font-size: 80px;
+  color: #ccc;
+}
+
+.main__no-trackers div {
+  font-size: 1.5em;
+  margin-top: 64px;
+}

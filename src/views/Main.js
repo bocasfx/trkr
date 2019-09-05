@@ -4,6 +4,9 @@ import Calendar from '../components/Calendar';
 import NavBar from '../components/NavBar';
 import { findUserByEmail } from '../sagas/user';
 import SideMenu from '../components/SideMenu';
+import calendarImage from '../media/calendar.jpg';
+import './Main.css';
+import TrackerListHeader from '../components/TrackerListHeader';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -15,9 +18,17 @@ const Main = () => {
 
   return (
     <>
-      <SideMenu />
+      {trackers.length && <SideMenu />}
       <NavBar />
-      {trackers.length ? <Calendar /> : <div>No trackers</div>}
+      {trackers.length ? (
+        <Calendar />
+      ) : (
+        <div className="main__no-trackers">
+          <img src={calendarImage} alt="calendar" />
+          <div>Create a tracker to get started.</div>
+          <TrackerListHeader />
+        </div>
+      )}
     </>
   );
 };
