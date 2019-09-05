@@ -90,6 +90,14 @@ const deleteAchievement = gql`
   }
 `;
 
+const deleteTracker = gql`
+  mutation($id: ID!) {
+    deleteTracker(id: $id) {
+      _id
+    }
+  }
+`;
+
 export {
   findUserByEmail,
   findUserById,
@@ -98,4 +106,5 @@ export {
   createTracker,
   createAchievement,
   deleteAchievement,
+  deleteTracker,
 };
