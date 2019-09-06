@@ -57,18 +57,21 @@
   outline: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1em;
 }
 
 .tracker_list_header__form input {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: transparent;
-  padding: 4px 8px;
+  padding: 8px;
   color: #ccc;
   outline: none;
   user-select: none;
   width: 100%;
   margin-right: 8px;
+  font-size: 1em;
+
 }
 
 body {
@@ -196,4 +199,19 @@ body {
 .closeButton {
   -webkit-animation-name: closeButton;
   animation-name: closeButton;
+}
+
+.tracker_list_header__dark input{
+  border-color: #ccc;
+  color: #555;
+}
+
+.tracker_list_header__dark input::placeholder {
+  color: #ccc;
+}
+
+.tracker_list_header__dark button {
+  background-color: #4e80c2;
+  color: #fff;
+  border: none;
 }

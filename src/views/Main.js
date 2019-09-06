@@ -25,8 +25,8 @@ const Main = () => {
       ) : (
         <div className="main__no-trackers">
           <img src={calendarImage} alt="calendar" />
-          <div>Create a tracker to get started.</div>
-          <TrackerListHeader />
+          <div className="main__no-trackers-legend">Add a tracker to get started.</div>
+          <TrackerListHeader showTitle={false} showButton={false} dark />
         </div>
       )}
     </>
