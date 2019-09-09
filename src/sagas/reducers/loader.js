@@ -2,14 +2,6 @@ const initialState = {
   loading: true,
 };
 
-const showLoader = () => ({
-  type: 'SHOW_LOADER',
-});
-
-const hideLoader = () => ({
-  type: 'HIDE_LOADER',
-});
-
 const reducer = (state = initialState, action) => {
   const { type } = action;
   switch (type) {
@@ -28,8 +20,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {
-  reducer,
-  showLoader,
-  hideLoader,
-};
+export default reducer;

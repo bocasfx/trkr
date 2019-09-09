@@ -24,8 +24,6 @@ exports.handler = (event, context, callback) => {
   const { body } = event;
   const { name, id } = JSON.parse(body);
 
-  console.log(name, id);
-
   const variables = { name, id };
   gqlClient
     .mutate({ mutation, variables })

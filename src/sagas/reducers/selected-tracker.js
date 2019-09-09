@@ -1,8 +1,3 @@
-const setSelectedTracker = trackerId => ({
-  type: 'SET_SELECTED_TRACKER',
-  id: trackerId,
-});
-
 const reducer = (state = null, action) => {
   const { type, id } = action;
   switch (type) {
@@ -14,7 +9,4 @@ const reducer = (state = null, action) => {
   }
 };
 
-export {
-  setSelectedTracker,
-  reducer,
-};
+export default reducer;

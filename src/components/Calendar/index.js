@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './index.css';
-import { displayFullYear } from '../../sagas/settings';
+import { displayFullYear } from '../../sagas/actions';
 import Year from './Year';
 import Loader from '../Loader';
 

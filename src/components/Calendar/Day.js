@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Day.css';
-import { createAchievement, deleteAchievement } from '../../sagas/achievements';
+import { createAchievement, deleteAchievement } from '../../sagas/actions';
 
 const Day = (props) => {
   const {

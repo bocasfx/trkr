@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Calendar from '../components/Calendar';
 import NavBar from '../components/NavBar';
-import { findUserByEmail } from '../sagas/user';
+import { findUserByEmail } from '../sagas/actions';
 import SideMenu from '../components/SideMenu';
 import calendarImage from '../media/calendar.jpg';
 import './Main.css';

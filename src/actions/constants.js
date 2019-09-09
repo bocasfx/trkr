@@ -1,5 +1,0 @@
-const SET_USER_EMAIL = 'SET_USER_EMAIL';
-
-export {
-  SET_USER_EMAIL,
-};

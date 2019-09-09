@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './TrackerListHeader.css';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createTracker } from '../sagas/trackers';
+import { createTracker } from '../sagas/actions';
 
 const TrackerListHeader = (props) => {
   const { showTitle, showButton, dark } = props;

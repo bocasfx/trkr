@@ -2,9 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import './TrackerList.css';
-import { findTrackerByID } from '../sagas/achievements';
+import { findTrackerByID, deleteTracker } from '../sagas/actions';
 import TrackerListHeader from './TrackerListHeader';
-import { deleteTracker } from '../sagas/trackers';
 
 const TrackerList = (props) => {
   const { trackers } = props;

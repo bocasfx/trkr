@@ -2,15 +2,6 @@ const initialState = {
   isOpen: false,
 };
 
-const closeMenu = () => ({
-  type: 'CLOSE_MENU',
-});
-
-const toggleMenu = isOpen => ({
-  type: 'TOGGLE_MENU',
-  isOpen,
-});
-
 const reducer = (state = initialState, action) => {
   const { type, isOpen } = action;
   switch (type) {
@@ -34,8 +25,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {
-  closeMenu,
-  toggleMenu,
-  reducer,
-};
+export default reducer;

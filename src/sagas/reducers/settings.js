@@ -2,12 +2,6 @@ const initialState = {
   viewFullYear: true,
 };
 
-const displayFullYear = (viewFullYear, viewMonth) => ({
-  type: 'DISPLAY_FULL_YEAR',
-  viewFullYear,
-  viewMonth,
-});
-
 const reducer = (state = initialState, action) => {
   const { type, viewFullYear, viewMonth } = action;
   switch (type) {
@@ -22,7 +16,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {
-  displayFullYear,
-  reducer,
-};
+export default reducer;
