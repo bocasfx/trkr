@@ -13,8 +13,14 @@ const deleteAchievement = data => ({
   data,
 });
 
+const deleteAchievementSuccess = data => ({
+  type: 'DELETE_ACHIEVEMENT_SUCCESS',
+  data,
+});
+
 export {
   createAchievement,
   createAchievementSuccess,
   deleteAchievement,
+  deleteAchievementSuccess,
 };

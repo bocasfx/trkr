@@ -10,6 +10,8 @@ import {
   hideLoader,
   setSelectedTracker,
   findTrackerByID,
+  createTrackerSuccess,
+  deleteTrackerSuccess,
 } from '../actions';
 
 function* watchFindTrackerById() {
@@ -40,11 +42,11 @@ function* watchCreateTracker() {
       const response = yield callLambda('create-tracker', 'POST', { name, id });
       const trackerId = response.data.createTracker._id; // eslint-disable-line no-underscore-dangle
       const data = { name, id: trackerId };
-      yield put({ type: 'CREATE_TRACKER_SUCCESS', data });
+      yield put(createTrackerSuccess(data));
       yield put(findTrackerByID(trackerId));
       yield put(setSelectedTracker(trackerId));
     } catch (error) {
-      yield put({ type: 'ERROR', error });
+      yield put(publishError(error));
     }
   });
 }
@@ -54,9 +56,9 @@ function* watchDeleteTracker() {
     const { id } = action;
     try {
       yield callLambda('delete-tracker', 'POST', { id });
-      yield put({ type: 'DELETE_TRACKER_SUCCESS', data: id });
+      yield put(deleteTrackerSuccess(id));
     } catch (error) {
-      yield put({ type: 'ERROR', error });
+      yield put(publishError(error));
     }
   });
 }

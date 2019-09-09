@@ -1,6 +1,12 @@
 import { put, takeLeading } from 'redux-saga/effects';
 import { callLambda } from '../../utils';
-import { findTrackerByID, showLoader, hideLoader } from '../actions';
+import {
+  findTrackerByID,
+  showLoader,
+  hideLoader,
+  publishError,
+  findUserByEmailSuccess,
+} from '../actions';
 
 function* watchFindUserByEmail() {
   yield takeLeading('FIND_USER_BY_EMAIL_BEGIN', function* doFindUserByEmail() {
@@ -15,13 +21,13 @@ function* watchFindUserByEmail() {
         yield callLambda('create-user', 'POST');
       }
 
-      yield put({ type: 'FIND_USER_BY_EMAIL_SUCCESS', data: responseData });
+      yield put(findUserByEmailSuccess(responseData));
 
       // eslint-disable-next-line no-underscore-dangle
       const trackerId = responseData.trackers.data[0]._id;
       yield put(findTrackerByID(trackerId, false));
     } catch (error) {
-      yield put({ type: 'ERROR', error });
+      yield put(publishError(error));
     }
     yield put(hideLoader());
   });

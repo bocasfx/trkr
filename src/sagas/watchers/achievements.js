@@ -1,7 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import { callLambda } from '../../utils';
 
-import { publishError, createAchievementSuccess } from '../actions';
+import { publishError, createAchievementSuccess, deleteAchievementSuccess } from '../actions';
 
 function* watchCreateAchievement() {
   yield takeEvery('CREATE_ACHIEVEMENT', function* doCreateAchievement(action) {
@@ -21,7 +21,7 @@ function* watchDeleteAchievement() {
     const { _id } = achievement;
     try {
       yield callLambda('delete-achievement', 'POST', { id: _id });
-      yield put({ type: 'DELETE_ACHIEVEMENT_SUCCESS', data: achievement });
+      yield put(deleteAchievementSuccess(achievement));
     } catch (error) {
       yield put(publishError(error));
     }

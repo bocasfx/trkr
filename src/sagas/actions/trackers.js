@@ -14,14 +14,27 @@ const createTracker = (name, id) => ({
   name,
   id,
 });
+
+const createTrackerSuccess = data => ({
+  type: 'CREATE_TRACKER_SUCCESS',
+  data,
+});
+
 const deleteTracker = id => ({
   type: 'DELETE_TRACKER',
   id,
+});
+
+const deleteTrackerSuccess = data => ({
+  type: 'DELETE_TRACKER_SUCCESS',
+  data,
 });
 
 export {
   findTrackerByID,
   findTrackerByIDSuccess,
   createTracker,
+  createTrackerSuccess,
   deleteTracker,
+  deleteTrackerSuccess,
 };
