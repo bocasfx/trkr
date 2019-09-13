@@ -1,0 +1,7 @@
+.login__container {
+  background-image: url(../media/landing-background.jpg);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background-size: cover;
+}

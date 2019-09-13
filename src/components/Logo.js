@@ -10,6 +10,7 @@ const Logo = () => (
       <div />
       <div />
     </div>
+    {/* <div>Photo by Jason Hogan on Unsplash</div> */}
   </div>
 );
 
