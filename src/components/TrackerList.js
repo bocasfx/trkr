@@ -21,7 +21,7 @@ const TrackerList = (props) => {
   };
 
   const renderConfirmation = () => (
-    <div className="tracker_list__confirmation">
+    <div className="tracker-list__confirmation">
       <button type="button" onClick={setShowConfirmation(false)}>
         Cancel
       </button>
@@ -40,8 +40,8 @@ const TrackerList = (props) => {
   const renderTrackers = () =>
     trackers.map(tracker => (
       <li key={tracker.name}>
-        <div className="tracker_list__name-container">
-          <div className="tracker_list__color-indicator" />
+        <div className="tracker-list__name-container">
+          <div className="tracker-list__color-indicator" />
           <button type="button" onClick={onTrackerSelection(tracker.id)}>
             {tracker.name}
           </button>
@@ -59,7 +59,7 @@ const TrackerList = (props) => {
   return (
     <>
       {showConfirmation && (
-        <div className="tracker_list__confirmation">
+        <div className="tracker-list__confirmation">
           <button type="button" onClick={() => setShowConfirmation(false)}>
             Cancel
           </button>
@@ -69,7 +69,7 @@ const TrackerList = (props) => {
         </div>
       )}
       <TrackerListHeader />
-      <ul className="tracker-list-container">{renderTrackers()}</ul>
+      <ul className="tracker-list__container">{renderTrackers()}</ul>
     </>
   );
 };

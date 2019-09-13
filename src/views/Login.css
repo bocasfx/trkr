@@ -1,7 +1,67 @@
-.login__container {
+.login__logo {
   background-image: url(../media/landing-background.jpg);
-  height: 100%;
-  position: absolute;
-  width: 100%;
   background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  padding-top: 128px;
+}
+
+.login__container section {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 128px;
+  justify-content: space-between;
+}
+
+.login__container section > div {
+  height: 350px;
+  width: 350px;
+  padding: 24px;
+  display: flex;
+}
+
+.login__container:first-child section {
+  margin-top: 128px;
+}
+
+.login__section-text {
+  font-size: 3em;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login__section-text-right {
+  text-align: left;
+}
+
+.login__section-text-left {
+  text-align: right;
+}
+
+.login__section-description {
+  font-size: 0.5em;
+  font-weight: normal;
+  line-height: 1.3em;
+  margin-top: 16px;
+}
+
+.login__image {
+  background-size: cover;
+  background-position: center;
+}
+
+.login__pen-and-paper {
+  background-image: url(../media/pen-and-paper.jpg);
+}
+
+.login__do-what-you-want {
+  background-image: url(../media/do-what-you-want.jpg);
+}
+
+.login__track-stuff {
+  background-image: url(../media/track-stuff.jpg);
 }

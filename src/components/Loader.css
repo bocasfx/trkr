@@ -1,42 +1,42 @@
-.loader-text {
+.loader__text {
   position: relative;
   margin: 300px auto 0;
   text-align: center;
   font-size: 1.5em;
 }
 
-.main-spinner {
+.loader__main-spinner {
   width: 80px;
   height: 80px;
   position: relative;
   margin: 48px auto;
 }
 
-.double-bounce1, .double-bounce2 {
+.loader__double-bounce1, .loader__double-bounce2 {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: orangered;
+  background-color: #cc0000;
   opacity: 0.6;
   position: absolute;
   top: 0;
   left: 0;
   
-  -webkit-animation: sk-bounce-main 2.0s infinite ease-in-out;
-  animation: sk-bounce-main 2.0s infinite ease-in-out;
+  -webkit-animation: loader__sk-bounce-main 2.0s infinite ease-in-out;
+  animation: loader__sk-bounce-main 2.0s infinite ease-in-out;
 }
 
-.double-bounce2 {
+.loader__double-bounce2 {
   -webkit-animation-delay: -1.0s;
   animation-delay: -1.0s;
 }
 
-@-webkit-keyframes sk-bounce-main {
+@-webkit-keyframes loader__sk-bounce-main {
   0%, 100% { -webkit-transform: scale(0.0) }
   50% { -webkit-transform: scale(1.0) }
 }
 
-@keyframes sk-bounce-main {
+@keyframes loader__sk-bounce-main {
   0%, 100% { 
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
@@ -44,4 +44,15 @@
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+.loader__blanket {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  opacity: 0.9;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }

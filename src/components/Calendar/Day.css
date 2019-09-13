@@ -22,7 +22,7 @@
 }
 
 .day__achievement {
-  background-color: orangered;
+  background-color: #cc0000;
   color: #fff;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .spinner-animation {
-  background-color: orangered;
+  background-color: #cc0000;
   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }

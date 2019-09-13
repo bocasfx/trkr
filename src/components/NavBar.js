@@ -34,7 +34,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="navbar-container">
+    <div className="navbar__container">
       <div>{user.email}</div>
       <button type="button" onClick={handleIdentity}>
         {label}

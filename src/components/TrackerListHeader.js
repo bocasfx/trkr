@@ -22,9 +22,9 @@ const TrackerListHeader = (props) => {
   };
 
   const renderForm = () => {
-    let formClass = 'tracker_list_header__form';
-    formClass += open || !showButton ? ' tracker_list_header__form-open' : ' tracker_list_header__form-close';
-    formClass += dark ? ' tracker_list_header__dark' : '';
+    let formClass = 'tracker-list-header__form';
+    formClass += open || !showButton ? ' tracker-list-header__form-open' : ' tracker-list-header__form-close';
+    formClass += dark ? ' tracker-list-header__dark' : '';
     return (
       <div className={formClass}>
         <input onKeyUp={onKeyUp} placeholder="Tracker name" />
@@ -33,12 +33,12 @@ const TrackerListHeader = (props) => {
     );
   };
 
-  let buttonClass = 'btn-round animated ';
-  buttonClass += open ? 'closeButton' : 'plusButton';
+  let buttonClass = 'tracker-list-header__btn-round tracker-list-header__animated ';
+  buttonClass += open ? 'tracker-list-header__closeButton' : 'tracker-list-header__plusButton';
 
   return (
     <>
-      <div className="tracker_list_header__container">
+      <div className="tracker-list-header__container">
         {showTitle && <h1>Trackers</h1>}
         {showButton && (
           <div
@@ -48,7 +48,7 @@ const TrackerListHeader = (props) => {
             onKeyPress={() => {}}
             tabIndex={0}
           >
-            <span className="close" />
+            <span className="tracker-list-header__close" />
           </div>
         )}
       </div>

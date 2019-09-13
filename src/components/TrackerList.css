@@ -1,9 +1,9 @@
-.tracker-list-container {
+.tracker-list__container {
   padding: 0;
   border-top: 1px solid #eeeeee33;
 }
 
-.tracker-list-container li {
+.tracker-list__container li {
   list-style-type: none;
   padding: 8px 4px;
   display: flex;
@@ -13,19 +13,19 @@
   min-height: 28px;
 }
 
-.tracker-list-container li:hover {
+.tracker-list__container li:hover {
   background-color: #eeeeee11;
 }
 
-.tracker-list-container li .invisible-button {
+.tracker-list__container li .invisible-button {
   display: none;
 }
 
-.tracker-list-container li:hover .invisible-button {
+.tracker-list__container li:hover .invisible-button {
   display: block;
 }
 
-.tracker-list-container button {
+.tracker-list__container button {
   border: none;
   background: transparent;
   font-size: 0.9em;
@@ -36,7 +36,7 @@
   outline: none;
 }
 
-.tracker_list__color-indicator {
+.tracker-list__color-indicator {
   border-radius: 50%;
   margin-right: 16px;
   background-color: #eee;
@@ -44,7 +44,7 @@
   height: 8px;
 }
 
-.tracker_list__name-container {
+.tracker-list__name-container {
   display: flex;
   align-items: center;
 }

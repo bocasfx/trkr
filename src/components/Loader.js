@@ -2,11 +2,11 @@ import React from 'react';
 import './Loader.css';
 
 const Loader = () => (
-  <div className="blanket">
-    <div className="loader-text">Wait for it...</div>
-    <div className="main-spinner">
-      <div className="double-bounce1" />
-      <div className="double-bounce2" />
+  <div className="loader__blanket">
+    <div className="loader__text">Wait for it...</div>
+    <div className="loader__main-spinner">
+      <div className="loader__double-bounce1" />
+      <div className="loader__double-bounce2" />
     </div>
   </div>
 );
