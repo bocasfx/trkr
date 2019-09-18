@@ -15,18 +15,23 @@ const Login = () => (
       <div className="login__section-text login__section-text-right">
         <div>Track stuff.</div>
         <div className="login__section-description">
-          I'm afraid of the world. Strange games they would play then. We must have died
-          alone, a long long time ago. No death for the perfect men.
+          TRKR will help you realize that you're either really good or really bad at tracking stuff.
         </div>
       </div>
     </section>
     <section>
-      <div className="login__section-text login__section-text-left">Or not. Do whatever you want.</div>
-      <div className="login__image login__do-what-you-want">else</div>
+      <div className="login__section-text login__section-text-left">
+        <div>Or... don't track anything.</div>
+        <div className="login__section-description">You're a grown person. Do whatever you want.</div>
+      </div>
+      <div className="login__image login__do-what-you-want" />
     </section>
     <section>
       <div className="login__image login__pen-and-paper" />
-      <div className="login__section-text login__section-text-right">Pen and paper would work just as well to be honest.</div>
+      <div className="login__section-text login__section-text-right">
+        <div>To be honest...</div>
+        <div className="login__section-description">Pen and paper would work just as well.</div>
+      </div>
     </section>
     <Footer />
   </div>
