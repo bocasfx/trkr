@@ -15,7 +15,7 @@ const Login = () => (
       <div className="login__section-text login__section-text-right">
         <div>Track stuff.</div>
         <div className="login__section-description">
-          TRKR will help you realize that you're either really good or really bad at tracking stuff.
+          TRKR will help you realize how bad you really are at tracking stuff.
         </div>
       </div>
     </section>
